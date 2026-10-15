@@ -1,0 +1,2566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission 100 JEE — 360° Command Center (2027)</title>
+    <!-- Website Icon (Favicon) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJsdWVHcmFkaWVudCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMyNTYzZWI7c3RvcC1vcGFjaXR5OjEiIC8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojNGY0NmU1O3N0b3Atb3BhY2l0eToxIiAvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJvcmFuZ2VHcmFkaWVudCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6I2Y1OWUwYjtzdG9wLW9wYWNpdHk6MSIgLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNlYTU4MGM7c3RvcC1vcGFjaXR5OjEiIC8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PGc+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNibHVlR3JhZGllbnQpIiBzdHJva2Utd2lkdGg9IjgiIC8+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMjIiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNibHVlR3JhZGllbnQpIiBzdHJva2Utd2lkdGg9IjYiIC8+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMTAiIGZpbGw9InVybCgjb3JhbmdlR3JhZGllbnQpIiAvPjxwYXRoIGQ9Ik0gODQgMTYgTCA1NiA0NCIgc3Ryb2tlPSJ1cmwoI29yYW5nZUdyYWRpZW50KSIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiIC8+PHBvbHlnb24gcG9pbnRzPSI4OCwxMiA3MCwxMiA4OCwzMCIgZmlsbD0idXJsKCNvcmFuZ2VHcmFkaWVudCIkiIC8+PC9nPjwvc3ZnPg==">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #f0fdfa;
+            --bg-card: #ffffff;
+            --bg-subtle: #ccfbf1;
+            --bg-input: #f0fdfa;
+            --text-main: #042f2e;
+            --text-muted: #115e59;
+            --primary: #0d9488;
+            --primary-dark: #042f2e;
+            --primary-light: #5eead4;
+            --border-color: #99f6e4;
+            --header-bg: #042f2e;
+            --header-text: #f0fdfa;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.25s ease, color 0.25s ease;
+        }
+
+        .theme-header {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .theme-card {
+            background-color: var(--bg-card);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+        .theme-subtle {
+            background-color: var(--bg-subtle);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+        .theme-input {
+            background-color: var(--bg-input);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+        .theme-input:focus {
+            outline: 2px solid var(--primary);
+            border-color: var(--primary);
+        }
+        .theme-btn-primary {
+            background-color: var(--primary);
+            color: #ffffff;
+        }
+        .theme-btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+        .theme-btn-dark {
+            background-color: var(--primary-dark);
+            color: #ffffff;
+        }
+        .theme-btn-dark:hover {
+            opacity: 0.92;
+        }
+        .theme-badge {
+            background-color: var(--bg-subtle);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+        .theme-text-muted {
+            color: var(--text-muted);
+        }
+        .theme-border {
+            border-color: var(--border-color);
+        }
+
+        input[type="checkbox"] {
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-main); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+
+        .tab-btn-active {
+            background-color: var(--primary-dark) !important;
+            color: #ffffff !important;
+            border-color: var(--primary-dark) !important;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-16">
+
+    <!-- ================= TOP HEADER ================= -->
+    <header class="theme-header sticky top-0 z-40 shadow-md">
+        <div class="max-w-6xl mx-auto px-3 sm:px-5 py-3">
+            
+            <div class="flex flex-wrap items-center justify-between gap-3">
+                
+                <!-- Brand Title (Clickable: Opens Modal) -->
+                <button type="button" onclick="openAboutModal()" class="flex items-center gap-3 text-left hover:opacity-90 transition cursor-pointer">
+                    <div class="w-3 h-10 rounded-full" style="background-color: var(--primary-light);"></div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h1 class="text-lg sm:text-xl font-black tracking-tight">MISSION 100 JEE</h1>
+                            <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full" style="background-color: var(--primary); color: #fff;">22 JAN 2027</span>
+                            <span class="text-[10px] opacity-75 font-bold">ℹ️</span>
+                        </div>
+                        <p class="text-[11px] opacity-80 font-medium">Daily Command Center & 360° Preparation Tracker</p>
+                    </div>
+                </button>
+
+                <!-- Right Controls: Live Days Left + Palette Button + Notifications Button -->
+                <div class="flex items-center gap-2 sm:gap-3 ml-auto">
+                    
+                    <!-- Live Countdown Box -->
+                    <div class="px-3 py-1.5 rounded-xl border text-center flex items-center gap-2" style="background-color: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2);">
+                        <div>
+                            <span id="daysLeftValue" class="text-lg sm:text-xl font-black leading-none block" style="color: var(--primary-light);">99</span>
+                            <span class="text-[9px] uppercase tracking-wider font-bold opacity-85 block">Days Left</span>
+                        </div>
+                    </div>
+
+                    <!-- 10-Theme Color Switcher Button -->
+                    <div class="relative">
+                        <button type="button" onclick="toggleThemeMenu()" class="px-3 py-2 rounded-xl text-xs font-extrabold border flex items-center gap-1.5 transition hover:opacity-90 cursor-pointer" style="background-color: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.25); color: #fff;">
+                            <span>🎨</span>
+                            <span id="currentThemeLabel" class="hidden sm:inline">Color Theme</span>
+                            <span class="text-[10px]">▼</span>
+                        </button>
+
+                        <div id="themeDropdown" class="hidden absolute right-0 mt-2 w-64 rounded-2xl shadow-2xl p-3 z-50 theme-card">
+                            <div class="flex justify-between items-center pb-2 mb-2 border-b theme-border">
+                                <span class="text-xs font-extrabold uppercase">Select Color Palette (10)</span>
+                                <button type="button" onclick="toggleThemeMenu()" class="text-xs font-bold px-1.5 py-0.5 rounded hover:opacity-70">✕</button>
+                            </div>
+                            <div id="themeListContainer" class="grid grid-cols-1 gap-1.5 max-h-80 overflow-y-auto pr-1"></div>
+                        </div>
+                    </div>
+
+                    <!-- Notifications Drawer Trigger -->
+                    <button type="button" onclick="toggleNtaDrawer(true)" class="relative px-3 py-2 rounded-xl text-xs font-extrabold border flex items-center gap-1.5 transition hover:opacity-90 cursor-pointer" style="background-color: var(--primary); border-color: rgba(255,255,255,0.3); color: #fff;">
+                        <span>🔔</span>
+                        <span class="hidden sm:inline">Notifications</span>
+                        <span id="ntaUnreadBadge" class="px-1.5 py-0.2 rounded-full text-[10px] font-black bg-white text-black">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Row 2: Direct Quick Portal Links -->
+            <div class="flex flex-wrap items-center gap-2 mt-3 pt-2.5 border-t" style="border-color: rgba(255,255,255,0.15);">
+                <span class="text-[10px] font-extrabold uppercase tracking-wider opacity-75 mr-1">Quick Links:</span>
+                
+                <a href="https://vidcloud.eu.org/#BatchDetails/batch/6aa790b23e605f161edbf979" target="_blank" rel="noopener noreferrer"
+                   class="px-3 py-1 rounded-lg text-xs font-extrabold flex items-center gap-1.5 transition hover:scale-105"
+                   style="background-color: var(--primary); color: #ffffff;">
+                    <span>🎓 Mission 100 Batch</span>
+                    <span class="text-[10px]">↗</span>
+                </a>
+
+                <a href="https://questions.examside.com/" target="_blank" rel="noopener noreferrer"
+                   class="px-3 py-1 rounded-lg text-xs font-extrabold flex items-center gap-1.5 transition hover:scale-105"
+                   style="background-color: rgba(255,255,255,0.14); color: #ffffff; border: 1px solid rgba(255,255,255,0.25);">
+                    <span>⚡ ExamSIDE PYQ & Practice</span>
+                    <span class="text-[10px]">↗</span>
+                </a>
+
+                <a href="https://ncert.nic.in/textbook.php" target="_blank" rel="noopener noreferrer"
+                   class="px-3 py-1 rounded-lg text-xs font-extrabold flex items-center gap-1.5 transition hover:scale-105"
+                   style="background-color: rgba(255,255,255,0.14); color: #ffffff; border: 1px solid rgba(255,255,255,0.25);">
+                    <span>📘 NCERT PCM Books</span>
+                    <span class="text-[10px]">↗</span>
+                </a>
+
+                <a href="https://jeemain.nta.nic.in/" target="_blank" rel="noopener noreferrer"
+                   class="px-3 py-1 rounded-lg text-xs font-extrabold flex items-center gap-1.5 transition hover:scale-105"
+                   style="background-color: rgba(255,255,255,0.14); color: #ffffff; border: 1px solid rgba(255,255,255,0.25);">
+                    <span>🏛️ NTA JEE Official</span>
+                    <span class="text-[10px]">↗</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= MAIN CONTAINER ================= -->
+    <main class="max-w-6xl mx-auto px-3 sm:px-5 mt-4">
+
+        <!-- ENHANCED DATE NAVIGATOR -->
+        <section class="theme-card rounded-2xl p-3.5 sm:p-4 shadow-sm mb-4">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-xl flex flex-col items-center justify-center font-black shrink-0" style="background-color: var(--primary-dark); color: #fff;">
+                        <span id="dateBoxDay" class="text-base leading-none">15</span>
+                        <span id="dateBoxMonth" class="text-[9px] uppercase tracking-wider opacity-80">OCT</span>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span id="ddmmyyyyDisplay" class="text-base sm:text-lg font-black tracking-tight">15 / 10 / 2026</span>
+                            <span id="weekdayDisplay" class="text-xs font-extrabold px-2 py-0.5 rounded-md theme-badge">Thursday</span>
+                        </div>
+                        <p class="text-[11px] theme-text-muted font-medium mt-0.5">
+                            Selected Tracking Date • <span id="autoSaveBadge" class="font-bold">✓ All changes auto-saved</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-1.5">
+                    <button type="button" onclick="changeDateByOffset(-1)" class="px-3 py-2 rounded-xl text-xs font-extrabold theme-subtle hover:opacity-80 cursor-pointer">
+                        ◀ Prev Day
+                    </button>
+                    <button type="button" onclick="jumpToToday()" class="px-3 py-2 rounded-xl text-xs font-extrabold theme-btn-primary cursor-pointer">
+                        Today
+                    </button>
+                    <button type="button" onclick="changeDateByOffset(1)" class="px-3 py-2 rounded-xl text-xs font-extrabold theme-subtle hover:opacity-80 cursor-pointer">
+                        Next Day ▶
+                    </button>
+                    <div class="relative flex items-center">
+                        <input type="date" id="nativeDatePicker" onchange="onNativeDateChange(this.value)"
+                               class="theme-input text-xs font-bold px-2.5 py-1.5 rounded-xl cursor-pointer">
+                    </div>
+                </div>
+            </div>
+
+            <div id="sevenDayStrip" class="grid grid-cols-7 gap-1.5 mt-3 pt-3 border-t theme-border"></div>
+        </section>
+
+        <!-- 4-TAB NAVIGATION -->
+        <nav class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-5">
+            <button type="button" id="tabBtn-today" onclick="switchTab('today')"
+                    class="tab-btn-active py-2.5 px-3 rounded-xl font-extrabold text-xs sm:text-sm border theme-card flex items-center justify-center gap-2 transition cursor-pointer">
+                <span>📋</span>
+                <span>1. Today's Tracker</span>
+            </button>
+            <button type="button" id="tabBtn-syllabus" onclick="switchTab('syllabus')"
+                    class="py-2.5 px-3 rounded-xl font-extrabold text-xs sm:text-sm border theme-card flex items-center justify-center gap-2 transition cursor-pointer">
+                <span>📚</span>
+                <span>2. PCM Syllabus</span>
+            </button>
+            <button type="button" id="tabBtn-mocks" onclick="switchTab('mocks')"
+                    class="py-2.5 px-3 rounded-xl font-extrabold text-xs sm:text-sm border theme-card flex items-center justify-center gap-2 transition cursor-pointer">
+                <span>📝</span>
+                <span>3. Mock Tests</span>
+            </button>
+            <button type="button" id="tabBtn-analytics" onclick="switchTab('analytics')"
+                    class="py-2.5 px-3 rounded-xl font-extrabold text-xs sm:text-sm border theme-card flex items-center justify-center gap-2 transition cursor-pointer">
+                <span>📊</span>
+                <span>4. 360° Analysis</span>
+            </button>
+        </nav>
+
+        <!-- ================= TAB 1: TODAY'S ROUTINE & TRACKER ================= -->
+        <div id="tabContent-today" class="space-y-6">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                <div class="theme-card p-3.5 rounded-2xl shadow-xs">
+                    <span class="text-[10px] font-extrabold uppercase theme-text-muted block">Batch Lectures Done</span>
+                    <div class="flex items-baseline justify-between mt-1">
+                        <span class="text-2xl font-black"><span id="topSumLectures">0</span> / <span id="topSumLecturesMax">3</span></span>
+                        <span id="topSumLecPct" class="text-xs font-bold theme-badge px-2 py-0.5 rounded-md">0%</span>
+                    </div>
+                </div>
+                <div class="theme-card p-3.5 rounded-2xl shadow-xs">
+                    <span class="text-[10px] font-extrabold uppercase theme-text-muted block">Today's Study Hours</span>
+                    <div class="flex items-baseline justify-between mt-1">
+                        <span class="text-2xl font-black"><span id="topSumHours">0.0</span> <small class="text-xs font-bold">hrs</small></span>
+                        <span id="topSumHrsTag" class="text-xs font-bold theme-badge px-2 py-0.5 rounded-md">PCM + Self</span>
+                    </div>
+                </div>
+                <div class="theme-card p-3.5 rounded-2xl shadow-xs">
+                    <span class="text-[10px] font-extrabold uppercase theme-text-muted block">Questions + PYQs Solved</span>
+                    <div class="flex items-baseline justify-between mt-1">
+                        <span class="text-2xl font-black" id="topSumTotalQ">0</span>
+                        <span class="text-xs font-bold theme-badge px-2 py-0.5 rounded-md"><span id="topSumPyq">0</span> PYQs</span>
+                    </div>
+                </div>
+                <div class="theme-card p-3.5 rounded-2xl shadow-xs">
+                    <span class="text-[10px] font-extrabold uppercase theme-text-muted block">Water, Sleep & Exercise</span>
+                    <div class="flex items-baseline justify-between mt-1">
+                        <span class="text-xl font-black"><span id="topSumWaterL">0.0</span>L | <span id="topSumSleep">0</span>h</span>
+                        <span class="text-xs font-bold theme-badge px-2 py-0.5 rounded-md"><span id="topSumEx">0</span>m Ex</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+                <!-- 1. MISSION 100 JEE LECTURES -->
+                <section class="theme-card rounded-2xl p-4 sm:p-5 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between pb-3 mb-4 border-b theme-border">
+                            <div>
+                                <h2 class="text-sm sm:text-base font-black uppercase tracking-wide">1. Mission 100 JEE Lectures</h2>
+                                <p class="text-xs theme-text-muted">3 Regular Daily Lectures + 2 Optional Backlog Slots</p>
+                            </div>
+                            <span class="text-xs font-extrabold px-2.5 py-1 rounded-full theme-badge">Batch Tracker</span>
+                        </div>
+
+                        <div id="lectureSlotsContainer" class="space-y-3"></div>
+
+                        <div class="mt-3">
+                            <button type="button" id="toggleBacklogBtn" onclick="toggleBacklogSlots()"
+                                    class="w-full py-2 px-3 rounded-xl text-xs font-extrabold border border-dashed theme-border theme-subtle hover:opacity-90 transition cursor-pointer">
+                                + Show 2 Extra / Backlog Lecture Slots (Lecture #4 & #5)
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-t theme-border flex items-center justify-between gap-2">
+                        <label for="extraSelfHours" class="text-xs font-extrabold">Extra Self-Study / Notes Revision Hours:</label>
+                        <div class="flex items-center gap-1.5">
+                            <input type="number" id="extraSelfHours" step="0.5" min="0" max="24" placeholder="0.0"
+                                   oninput="updateField('extraSelfHours', this.value)"
+                                   class="theme-input w-20 text-center font-black text-sm py-1.5 px-2 rounded-xl">
+                            <span class="text-xs font-bold theme-text-muted">hrs</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. PCM SUBJECT STUDY HOURS -->
+                <section class="theme-card rounded-2xl p-4 sm:p-5 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between pb-3 mb-4 border-b theme-border">
+                            <div>
+                                <h2 class="text-sm sm:text-base font-black uppercase tracking-wide">2. Subject Study, Questions & PYQs</h2>
+                                <p class="text-xs theme-text-muted">Log today's hours, practice questions & PYQs solved per subject</p>
+                            </div>
+                            <span class="text-xs font-extrabold px-2.5 py-1 rounded-full theme-badge">PCM Matrix</span>
+                        </div>
+
+                        <div class="space-y-3.5">
+                            <div class="theme-subtle p-3.5 rounded-xl">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm font-black uppercase">⚡ Physics</span>
+                                    <span id="phySubTotalBadge" class="text-xs font-extrabold px-2 py-0.5 rounded bg-white/80 text-black">0 hrs • 0 Total Qs</span>
+                                </div>
+                                <div class="grid grid-cols-3 gap-2">
+                                    <div>
+                                        <label class="text-[10px] font-extrabold uppercase block mb-1">Study Hours</label>
+                                        <input type="number" step="0.5" min="0" id="phyHrs" placeholder="0.0"
+                                               oninput="updateField('phyHrs', this.value)"
+                                               class="theme-input w-full text-center font-black text-sm py-1.5 rounded-lg">
+                                    </div>
+                                    <div>
+                                        <label class="text-[10px] font-extrabold uppercase block mb-1">Practice Qs</label>
+                                        <input type="number" min="0" id="phyQs" placeholder="0"
+                                               oninput="updateField('phyQs', this.value)"
+                                               class="theme-input w-full text-center font-black text-sm py-1.5 rounded-lg">
+                                    </div>
+                                    <div>
+                                        <label class="text-[10px] font-extrabold uppercase block mb-1">PYQs Solved</label>
+                                        <input type="number" min="0" id="phyPyq" placeholder="0"
+                                               oninput="updateField('phyPyq', this.value)"
+                                               class="theme-input w-full text-center font-black text-sm py-1.5 rounded-lg">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="theme-subtle p-3.5 rounded-xl">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm font-black uppercase">🧪 Chemistry</span>
+                                    <span id="chemSubTotalBadge" class="text-xs font-extrabold px-2 py-0.5 rounded bg-white/80 text-black">0 hrs • 0 Total Qs</span>
+                                </div>
+                                <div class="grid grid-cols-3 gap-2">
+                                    <div>
+                                        <label class="text-[10px] font-extrabold uppercase block mb-1">Study Hours</label>
+                                        <input type="number" step="0.5" min="0" id="chemHrs" placeholder="0.0"
+                                               oninput="updateField('chemHrs', this.value)"
+                                               class="theme-input w-full text-center font-black text-sm py-1.5 rounded-lg">
+                                    </div>
+                                    <div>
+                                        <label class="text-[10px] font-extrabold uppercase block mb-1">Practice Qs</label>
+                                        <input type="number" min="0" id="chemQs" placeholder="0"
+                                               oninput="updateField('chemQs', this.value)"
+                                               class="theme-input w-full text-center font-black text-sm py-1.5 rounded-lg">
+                                    </div>
+                                    <div>
+                                        <label class="text-[10px] font-extrabold uppercase block mb-1">PYQs Solved</label>
+                                        <input type="number" min="0" id="chemPyq" placeholder="0"
+                                               oninput="updateField('chemPyq', this.value)"
+                                               class="theme-input w-full text-center font-black text-sm py-1.5 rounded-lg">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="theme-subtle p-3.5 rounded-xl">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm font-black uppercase">📐 Mathematics</span>
+                                    <span id="mathSubTotalBadge" class="text-xs font-extrabold px-2 py-0.5 rounded bg-white/80 text-black">0 hrs • 0 Total Qs</span>
+                                </div>
+                                <div class="grid grid-cols-3 gap-2">
+                                    <div>
+                                        <label class="text-[10px] font-extrabold uppercase block mb-1">Study Hours</label>
+                                        <input type="number" step="0.5" min="0" id="mathHrs" placeholder="0.0"
+                                               oninput="updateField('mathHrs', this.value)"
+                                               class="theme-input w-full text-center font-black text-sm py-1.5 rounded-lg">
+                                    </div>
+                                    <div>
+                                        <label class="text-[10px] font-extrabold uppercase block mb-1">Practice Qs</label>
+                                        <input type="number" min="0" id="mathQs" placeholder="0"
+                                               oninput="updateField('mathQs', this.value)"
+                                               class="theme-input w-full text-center font-black text-sm py-1.5 rounded-lg">
+                                    </div>
+                                    <div>
+                                        <label class="text-[10px] font-extrabold uppercase block mb-1">PYQs Solved</label>
+                                        <input type="number" min="0" id="mathPyq" placeholder="0"
+                                               oninput="updateField('mathPyq', this.value)"
+                                               class="theme-input w-full text-center font-black text-sm py-1.5 rounded-lg">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 p-3 rounded-xl flex items-center justify-between text-xs font-extrabold" style="background-color: var(--primary-dark); color: #fff;">
+                        <span>PCM TOTAL:</span>
+                        <span id="matrixFooterHours">0.0 Hrs</span>
+                        <span id="matrixFooterQs">0 Practice Qs</span>
+                        <span id="matrixFooterPyqs">0 PYQs</span>
+                    </div>
+                </section>
+
+                <!-- 3. DAILY ACTION TO-DO LIST -->
+                <section class="theme-card rounded-2xl p-4 sm:p-5 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between pb-3 mb-3 border-b theme-border">
+                            <div>
+                                <h2 class="text-sm sm:text-base font-black uppercase tracking-wide">3. Daily Action To-Do List</h2>
+                                <p class="text-xs theme-text-muted">Click quick tags or type your daily target tasks below</p>
+                            </div>
+                            <span id="todoProgressBadge" class="text-xs font-extrabold px-2.5 py-1 rounded-full theme-badge">0 / 0 Done</span>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5 mb-3">
+                            <button type="button" onclick="quickAddTodo('Solve Physics DPP')" class="text-[11px] font-bold px-2.5 py-1 rounded-lg theme-subtle hover:opacity-80 cursor-pointer">+ Physics DPP</button>
+                            <button type="button" onclick="quickAddTodo('Solve Chemistry DPP')" class="text-[11px] font-bold px-2.5 py-1 rounded-lg theme-subtle hover:opacity-80 cursor-pointer">+ Chemistry DPP</button>
+                            <button type="button" onclick="quickAddTodo('Solve Math DPP')" class="text-[11px] font-bold px-2.5 py-1 rounded-lg theme-subtle hover:opacity-80 cursor-pointer">+ Math DPP</button>
+                            <button type="button" onclick="quickAddTodo('25 PYQs on ExamSIDE')" class="text-[11px] font-bold px-2.5 py-1 rounded-lg theme-subtle hover:opacity-80 cursor-pointer">+ 25 PYQs</button>
+                            <button type="button" onclick="quickAddTodo('NCERT Reading (45 mins)')" class="text-[11px] font-bold px-2.5 py-1 rounded-lg theme-subtle hover:opacity-80 cursor-pointer">+ NCERT Reading</button>
+                        </div>
+
+                        <div class="flex gap-2 mb-3">
+                            <input type="text" id="todoInputBox" placeholder="Type a task and press Enter or click + Add..."
+                                   onkeydown="if(event.key==='Enter'){ event.preventDefault(); addNewTodoFromInput(); }"
+                                   class="theme-input flex-1 text-xs sm:text-sm font-medium px-3.5 py-2.5 rounded-xl">
+                            <button type="button" onclick="addNewTodoFromInput()"
+                                    class="theme-btn-dark font-extrabold text-xs sm:text-sm px-4 py-2.5 rounded-xl shrink-0 cursor-pointer">
+                                + Add Task
+                            </button>
+                        </div>
+
+                        <ul id="todoListUl" class="space-y-2 max-h-64 overflow-y-auto pr-1"></ul>
+                    </div>
+                    <div class="mt-4 pt-2.5 border-t theme-border flex justify-between items-center text-xs">
+                        <span class="theme-text-muted font-medium">Small daily targets build AIR ranks.</span>
+                        <button type="button" onclick="clearCompletedTodos()" class="font-extrabold underline cursor-pointer">Clear Completed</button>
+                    </div>
+                </section>
+
+                <!-- 4. HEALTH, WATER, EXERCISE & MEAL TIMINGS LOG -->
+                <section class="theme-card rounded-2xl p-4 sm:p-5 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between pb-3 border-b theme-border">
+                        <div>
+                            <h2 class="text-sm sm:text-base font-black uppercase tracking-wide">4. Health & Bio-Fuel (With Timings)</h2>
+                            <p class="text-xs theme-text-muted">Track water, sleep timing, exercise timing & all 4 meal timings</p>
+                        </div>
+                        <span class="text-xs font-extrabold px-2.5 py-1 rounded-full theme-badge">Bio + Time</span>
+                    </div>
+
+                    <div class="theme-subtle p-3 rounded-xl">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-black uppercase">💧 Water Intake (250ml / Glass)</span>
+                            <span class="text-xs font-black px-2 py-0.5 rounded" style="background-color: var(--primary-dark); color: #fff;">
+                                <span id="waterGlassesCount">0</span> / 12 Glasses (<span id="waterLitersCount">0.00</span> L)
+                            </span>
+                        </div>
+                        <div id="waterButtonsGrid" class="grid grid-cols-6 sm:grid-cols-12 gap-1.5"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <div class="theme-subtle p-2.5 rounded-xl space-y-1.5">
+                            <span class="text-[11px] font-black uppercase block">😴 Sleep Log & Timing</span>
+                            <div class="grid grid-cols-2 gap-1.5">
+                                <input type="number" step="0.5" min="0" max="24" id="sleepHrs" placeholder="Hours (e.g. 7)"
+                                       oninput="updateField('sleepHrs', this.value)"
+                                       class="theme-input text-xs font-bold px-2.5 py-1.5 rounded-lg w-full">
+                                <input type="text" id="sleepTime" placeholder="11:30 PM - 6:30 AM"
+                                       oninput="updateField('sleepTime', this.value)"
+                                       class="theme-input text-xs font-medium px-2.5 py-1.5 rounded-lg w-full">
+                            </div>
+                        </div>
+
+                        <div class="theme-subtle p-2.5 rounded-xl space-y-1.5">
+                            <span class="text-[11px] font-black uppercase block">🏃 Exercise, Duration & Time</span>
+                            <div class="grid grid-cols-3 gap-1.5">
+                                <input type="text" id="exType" placeholder="Workout"
+                                       oninput="updateField('exType', this.value)"
+                                       class="theme-input text-xs font-medium px-2 py-1.5 rounded-lg w-full">
+                                <input type="number" min="0" id="exMins" placeholder="Mins (30)"
+                                       oninput="updateField('exMins', this.value)"
+                                       class="theme-input text-xs font-bold px-2 py-1.5 rounded-lg w-full">
+                                <input type="text" id="exTime" placeholder="6:30 AM"
+                                       oninput="updateField('exTime', this.value)"
+                                       class="theme-input text-xs font-medium px-2 py-1.5 rounded-lg w-full">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="text-[11px] font-black uppercase block mb-2">🍽️ Daily Meals & Exact Timing</span>
+                        <div class="space-y-2">
+                            <div class="grid grid-cols-12 gap-2 items-center theme-subtle p-2 rounded-xl">
+                                <span class="col-span-3 sm:col-span-2 text-[11px] font-extrabold">Breakfast:</span>
+                                <input type="text" id="mealBreakfastTime" placeholder="Time (8:30 AM)"
+                                       oninput="updateField('mealBreakfastTime', this.value)"
+                                       class="col-span-4 sm:col-span-3 theme-input text-xs font-bold px-2 py-1.5 rounded-lg">
+                                <input type="text" id="mealBreakfast" placeholder="What did you eat? (e.g. Oats, Roti, Eggs)"
+                                       oninput="updateField('mealBreakfast', this.value)"
+                                       class="col-span-5 sm:col-span-7 theme-input text-xs px-2.5 py-1.5 rounded-lg">
+                            </div>
+
+                            <div class="grid grid-cols-12 gap-2 items-center theme-subtle p-2 rounded-xl">
+                                <span class="col-span-3 sm:col-span-2 text-[11px] font-extrabold">Lunch:</span>
+                                <input type="text" id="mealLunchTime" placeholder="Time (1:30 PM)"
+                                       oninput="updateField('mealLunchTime', this.value)"
+                                       class="col-span-4 sm:col-span-3 theme-input text-xs font-bold px-2 py-1.5 rounded-lg">
+                                <input type="text" id="mealLunch" placeholder="What did you eat? (e.g. Rice, Dal, Fish/Paneer)"
+                                       oninput="updateField('mealLunch', this.value)"
+                                       class="col-span-5 sm:col-span-7 theme-input text-xs px-2.5 py-1.5 rounded-lg">
+                            </div>
+
+                            <div class="grid grid-cols-12 gap-2 items-center theme-subtle p-2 rounded-xl">
+                                <span class="col-span-3 sm:col-span-2 text-[11px] font-extrabold">Snacks:</span>
+                                <input type="text" id="mealSnacksTime" placeholder="Time (5:30 PM)"
+                                       oninput="updateField('mealSnacksTime', this.value)"
+                                       class="col-span-4 sm:col-span-3 theme-input text-xs font-bold px-2 py-1.5 rounded-lg">
+                                <input type="text" id="mealSnacks" placeholder="What did you eat? (e.g. Chana, Fruits, Tea)"
+                                       oninput="updateField('mealSnacks', this.value)"
+                                       class="col-span-5 sm:col-span-7 theme-input text-xs px-2.5 py-1.5 rounded-lg">
+                            </div>
+
+                            <div class="grid grid-cols-12 gap-2 items-center theme-subtle p-2 rounded-xl">
+                                <span class="col-span-3 sm:col-span-2 text-[11px] font-extrabold">Dinner:</span>
+                                <input type="text" id="mealDinnerTime" placeholder="Time (9:30 PM)"
+                                       oninput="updateField('mealDinnerTime', this.value)"
+                                       class="col-span-4 sm:col-span-3 theme-input text-xs font-bold px-2 py-1.5 rounded-lg">
+                                <input type="text" id="mealDinner" placeholder="What did you eat? (e.g. Roti, Sabzi, Milk)"
+                                       oninput="updateField('mealDinner', this.value)"
+                                       class="col-span-5 sm:col-span-7 theme-input text-xs px-2.5 py-1.5 rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Bottom CTA -->
+            <div class="theme-card rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div>
+                    <h3 class="text-sm font-black uppercase">📊 Want to see your Complete 360° Performance Analysis?</h3>
+                    <p class="text-xs theme-text-muted">Check Lecture consistency, Subject Hours, PYQ count, Weak Chapters, Water, Sleep & Syllabus Progress in one place.</p>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                    <button type="button" onclick="switchTab('analytics')" class="theme-btn-dark font-extrabold text-xs sm:text-sm px-4 py-2.5 rounded-xl cursor-pointer">
+                        Open 360° Analysis →
+                    </button>
+                    <button type="button" onclick="openResetDayModal()" class="theme-subtle font-bold text-xs px-3 py-2.5 rounded-xl cursor-pointer">
+                        Reset Today
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TAB 2: PCM SYLLABUS TRACKER ================= -->
+        <div id="tabContent-syllabus" class="hidden space-y-5">
+            <div class="theme-card rounded-2xl p-4 sm:p-5 shadow-sm">
+                <div class="flex flex-wrap justify-between items-center gap-2 mb-4">
+                    <div>
+                        <h2 class="text-base font-black uppercase">📚 JEE Mains 2027 Complete Syllabus Tracker</h2>
+                        <p class="text-xs theme-text-muted">Tick Theory, PYQs & Revision as you finish each chapter</p>
+                    </div>
+                    <span id="overallSyllabusBadge" class="text-sm font-black px-3 py-1 rounded-xl theme-btn-dark">Overall: 0%</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div class="theme-subtle p-3 rounded-xl">
+                        <div class="flex justify-between text-xs font-extrabold mb-1">
+                            <span>⚡ Physics Syllabus</span>
+                            <span id="phySylPct">0%</span>
+                        </div>
+                        <div class="w-full h-2.5 bg-white/70 rounded-full overflow-hidden">
+                            <div id="phySylBar" class="h-full transition-all duration-300" style="width: 0%; background-color: var(--primary-dark);"></div>
+                        </div>
+                    </div>
+                    <div class="theme-subtle p-3 rounded-xl">
+                        <div class="flex justify-between text-xs font-extrabold mb-1">
+                            <span>🧪 Chemistry Syllabus</span>
+                            <span id="chemSylPct">0%</span>
+                        </div>
+                        <div class="w-full h-2.5 bg-white/70 rounded-full overflow-hidden">
+                            <div id="chemSylBar" class="h-full transition-all duration-300" style="width: 0%; background-color: var(--primary-dark);"></div>
+                        </div>
+                    </div>
+                    <div class="theme-subtle p-3 rounded-xl">
+                        <div class="flex justify-between text-xs font-extrabold mb-1">
+                            <span>📐 Mathematics Syllabus</span>
+                            <span id="mathSylPct">0%</span>
+                        </div>
+                        <div class="w-full h-2.5 bg-white/70 rounded-full overflow-hidden">
+                            <div id="mathSylBar" class="h-full transition-all duration-300" style="width: 0%; background-color: var(--primary-dark);"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 mt-4 pt-3 border-t theme-border">
+                    <button type="button" id="sylFilter-Physics" onclick="filterSyllabus('Physics')" class="px-4 py-2 rounded-xl text-xs font-extrabold theme-btn-dark cursor-pointer">⚡ Physics (20 Chapters)</button>
+                    <button type="button" id="sylFilter-Chemistry" onclick="filterSyllabus('Chemistry')" class="px-4 py-2 rounded-xl text-xs font-extrabold theme-subtle cursor-pointer">🧪 Chemistry (20 Chapters)</button>
+                    <button type="button" id="sylFilter-Mathematics" onclick="filterSyllabus('Mathematics')" class="px-4 py-2 rounded-xl text-xs font-extrabold theme-subtle cursor-pointer">📐 Mathematics (16 Chapters)</button>
+                </div>
+            </div>
+
+            <div id="syllabusChaptersGrid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+        </div>
+
+        <!-- ================= TAB 3: MOCK TEST LOGGER ================= -->
+        <div id="tabContent-mocks" class="hidden space-y-6">
+            <div class="theme-card rounded-2xl p-4 sm:p-5 shadow-sm">
+                <div class="pb-3 mb-4 border-b theme-border">
+                    <h2 class="text-base font-black uppercase">📝 Log a New Mock Test / Practice Test</h2>
+                    <p class="text-xs theme-text-muted">Record subject-wise marks and identify which chapters went strong or weak</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
+                    <div>
+                        <label class="text-[11px] font-extrabold uppercase block mb-1">Test Name / Number</label>
+                        <input type="text" id="mockName" placeholder="e.g. Mission 100 Minor Test #1" class="theme-input w-full text-xs sm:text-sm font-semibold px-3 py-2 rounded-xl">
+                    </div>
+                    <div>
+                        <label class="text-[11px] font-extrabold uppercase block mb-1">Test Date</label>
+                        <input type="date" id="mockDate" class="theme-input w-full text-xs sm:text-sm font-semibold px-3 py-2 rounded-xl">
+                    </div>
+                    <div>
+                        <label class="text-[11px] font-extrabold uppercase block mb-1">Max Marks</label>
+                        <input type="number" id="mockMax" value="300" oninput="updateMockPlaceholders()" class="theme-input w-full text-xs sm:text-sm font-bold px-3 py-2 rounded-xl">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-3 mb-3">
+                    <div>
+                        <label class="text-[11px] font-extrabold uppercase block mb-1">⚡ Physics Marks</label>
+                        <input type="number" id="mockPhy" placeholder="Out of 100" class="theme-input w-full text-sm font-black text-center py-2 rounded-xl">
+                    </div>
+                    <div>
+                        <label class="text-[11px] font-extrabold uppercase block mb-1">🧪 Chemistry Marks</label>
+                        <input type="number" id="mockChem" placeholder="Out of 100" class="theme-input w-full text-sm font-black text-center py-2 rounded-xl">
+                    </div>
+                    <div>
+                        <label class="text-[11px] font-extrabold uppercase block mb-1">📐 Math Marks</label>
+                        <input type="number" id="mockMath" placeholder="Out of 100" class="theme-input w-full text-sm font-black text-center py-2 rounded-xl">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+                    <div>
+                        <label class="text-[11px] font-extrabold uppercase block mb-1">✅ Strong Chapters (কোন চ্যাপ্টারে ভালো হয়েছে)</label>
+                        <input type="text" id="mockStrong" placeholder="e.g. Kinematics, Mole Concept, Quadratic" class="theme-input w-full text-xs sm:text-sm px-3 py-2 rounded-xl">
+                    </div>
+                    <div>
+                        <label class="text-[11px] font-extrabold uppercase block mb-1">⚠️ Weak Chapters (কোন চ্যাপ্টারে ভুল বা খারাপ হয়েছে)</label>
+                        <input type="text" id="mockWeak" placeholder="e.g. Rotational Motion, Ionic Equilibrium, Calculus" class="theme-input w-full text-xs sm:text-sm px-3 py-2 rounded-xl">
+                    </div>
+                </div>
+                <button type="button" onclick="saveMockTest()" class="theme-btn-dark font-extrabold text-xs sm:text-sm px-5 py-2.5 rounded-xl cursor-pointer">
+                    + Save Mock Test Result
+                </button>
+            </div>
+
+            <div class="theme-card rounded-2xl p-4 sm:p-5 shadow-sm">
+                <h3 class="text-sm font-black uppercase mb-3">📋 Your Saved Mock Test History</h3>
+                <div id="mockHistoryList" class="space-y-3"></div>
+            </div>
+        </div>
+
+        <!-- ================= TAB 4: 360° COMPLETE ANALYSIS ================= -->
+        <div id="tabContent-analytics" class="hidden space-y-5">
+            <div class="theme-card rounded-2xl p-4 sm:p-5 shadow-sm space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                        <h2 class="text-base sm:text-lg font-black uppercase">📊 360° Preparation Analysis</h2>
+                        <p id="anModeSubtitle" class="text-xs theme-text-muted">Check your 1 Day, 2 Week (14 Days) & 100 Day Progress in one place</p>
+                    </div>
+                    <span id="daysTrackedBadge" class="text-xs font-black px-3 py-1.5 rounded-xl theme-btn-dark self-start sm:self-auto">Today's Snapshot</span>
+                </div>
+
+                <div class="grid grid-cols-3 gap-2 pt-3 border-t theme-border">
+                    <button type="button" id="anBtn-1day" onclick="switchAnalysisMode('1day')"
+                            class="tab-btn-active py-2.5 px-3 rounded-xl font-extrabold text-xs sm:text-sm border theme-subtle flex items-center justify-center gap-1.5 transition cursor-pointer">
+                        <span>📅</span>
+                        <span>1 Day</span>
+                    </button>
+                    <button type="button" id="anBtn-2week" onclick="switchAnalysisMode('2week')"
+                            class="py-2.5 px-3 rounded-xl font-extrabold text-xs sm:text-sm border theme-subtle flex items-center justify-center gap-1.5 transition cursor-pointer">
+                        <span>📆</span>
+                        <span>2 Week</span>
+                    </button>
+                    <button type="button" id="anBtn-100day" onclick="switchAnalysisMode('100day')"
+                            class="py-2.5 px-3 rounded-xl font-extrabold text-xs sm:text-sm border theme-subtle flex items-center justify-center gap-1.5 transition cursor-pointer">
+                        <span>🚀</span>
+                        <span>100 Day Progress</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- VIEW 1: 1 DAY ANALYSIS -->
+            <div id="anView-1day" class="space-y-5">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5">
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">Study Hours (1 Day)</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1"><span id="d1TotHours">0.0</span> <small class="text-xs">hrs</small></p>
+                        <span id="d1HoursSplit" class="text-[11px] font-bold theme-text-muted block mt-1">PCM: 0.0h • Self: 0.0h</span>
+                    </div>
+
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">Questions + PYQs</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1" id="d1TotQuestions">0</p>
+                        <span id="d1PyqSplit" class="text-[11px] font-bold theme-text-muted block mt-1">0 Practice • 0 PYQs</span>
+                    </div>
+
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">Lectures Done</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1" id="d1TotLectures">0 / 3</p>
+                        <span id="d1LecStatus" class="text-[11px] font-bold theme-text-muted block mt-1">0% Completed</span>
+                    </div>
+
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">To-Do Tasks Done</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1" id="d1TodoDone">0 / 0</p>
+                        <span id="d1TodoPct" class="text-[11px] font-bold theme-text-muted block mt-1">0% Action Rate</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                    <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-3.5">
+                        <div class="flex items-center justify-between pb-2 border-b theme-border">
+                            <h3 class="text-sm font-black uppercase">📚 1 Day Subject-Wise Output</h3>
+                            <span id="d1DateLabel" class="text-xs font-extrabold theme-badge px-2.5 py-0.5 rounded-lg">Today</span>
+                        </div>
+                        <div id="d1SubjectBreakdown" class="space-y-3"></div>
+                    </div>
+
+                    <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-4">
+                        <h3 class="text-sm font-black uppercase pb-2 border-b theme-border">🎓 Lectures & Bio-Fuel Summary (1 Day)</h3>
+                        <div id="d1LectureTopicsList" class="space-y-1.5 text-xs"></div>
+
+                        <div class="grid grid-cols-3 gap-2 text-center pt-2 border-t theme-border">
+                            <div class="theme-subtle p-2.5 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">💧 Water</span>
+                                <span id="d1WaterVal" class="text-base font-black">0.0 L</span>
+                            </div>
+                            <div class="theme-subtle p-2.5 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">😴 Sleep</span>
+                                <span id="d1SleepVal" class="text-base font-black">0 hrs</span>
+                            </div>
+                            <div class="theme-subtle p-2.5 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">🏃 Exercise</span>
+                                <span id="d1ExVal" class="text-base font-black">0 mins</span>
+                            </div>
+                        </div>
+
+                        <div id="d1VerdictBox" class="theme-subtle p-3 rounded-xl text-xs font-bold"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 2: 2 WEEK ANALYSIS -->
+            <div id="anView-2week" class="hidden space-y-5">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5">
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">2-Week Study Hours</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1"><span id="w2TotHours">0.0</span> <small class="text-xs">hrs</small></p>
+                        <span id="w2AvgHours" class="text-[11px] font-bold theme-text-muted block mt-1">Avg: 0.0 hrs/day</span>
+                    </div>
+
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">2-Week Questions + PYQs</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1" id="w2TotQuestions">0</p>
+                        <span id="w2PyqSplit" class="text-[11px] font-bold theme-text-muted block mt-1">0 Practice • 0 PYQs</span>
+                    </div>
+
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">2-Week Lectures Done</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1" id="w2TotLectures">0</p>
+                        <span id="w2AvgLecs" class="text-[11px] font-bold theme-text-muted block mt-1">Active Days: 0 / 14</span>
+                    </div>
+
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">2-Week Water & Sleep</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1" id="w2AvgWater">0.0 L</p>
+                        <span id="w2AvgSleep" class="text-[11px] font-bold theme-text-muted block mt-1">Avg Sleep: 0.0 hrs</span>
+                    </div>
+                </div>
+
+                <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-3">
+                    <div class="flex flex-wrap items-center justify-between gap-2 pb-2 border-b theme-border">
+                        <div>
+                            <h3 class="text-sm font-black uppercase">📆 Last 14 Days Consistency Log (2 Weeks)</h3>
+                            <p class="text-xs theme-text-muted">Click any day card below to jump to that date's tracker</p>
+                        </div>
+                        <span id="w2RangeBadge" class="text-xs font-extrabold theme-badge px-2.5 py-1 rounded-lg">Last 14 Days</span>
+                    </div>
+                    <div id="w2DaysGrid" class="grid grid-cols-2 sm:grid-cols-7 gap-2"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                    <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-3.5">
+                        <h3 class="text-sm font-black uppercase pb-2 border-b theme-border">📚 2-Week Subject Study & PYQ Balance</h3>
+                        <div id="w2SubjectBreakdown" class="space-y-3"></div>
+                    </div>
+
+                    <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-4">
+                        <h3 class="text-sm font-black uppercase pb-2 border-b theme-border">⚡ 2-Week Execution & Routine Summary</h3>
+                        <div class="grid grid-cols-2 gap-3 text-center">
+                            <div class="theme-subtle p-3 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">To-Do Completion</span>
+                                <span id="w2TodoRate" class="text-xl font-black">0%</span>
+                                <span id="w2TodoCount" class="text-[11px] block opacity-80">0 / 0 tasks</span>
+                            </div>
+                            <div class="theme-subtle p-3 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">Total Exercise</span>
+                                <span id="w2ExTotal" class="text-xl font-black">0 mins</span>
+                                <span id="w2MealRate" class="text-[11px] block opacity-80">Meals logged: 0%</span>
+                            </div>
+                        </div>
+                        <div id="w2InsightBox" class="theme-subtle p-3.5 rounded-xl text-xs font-bold leading-relaxed"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 3: 100 DAY PROGRESS ANALYSIS -->
+            <div id="anView-100day" class="hidden space-y-5">
+                <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-3">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <div>
+                            <h3 class="text-sm sm:text-base font-black uppercase">🚀 Mission 100 Days Overall Journey Progress</h3>
+                            <p class="text-xs theme-text-muted">Tracks your 100-day consistency, study hours target (800+ hrs) & question milestone (5000+ Qs)</p>
+                        </div>
+                        <span id="p100DaysMilestoneBadge" class="text-xs sm:text-sm font-black px-3 py-1 rounded-xl theme-btn-dark">0 / 100 Days Active</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+                        <div class="theme-subtle p-3 rounded-xl space-y-1.5">
+                            <div class="flex justify-between text-xs font-extrabold">
+                                <span>Active Days (Target: 100d)</span>
+                                <span id="p100DayBarLabel">0%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-white/70 rounded-full overflow-hidden">
+                                <div id="p100DayBar" class="h-full transition-all duration-300" style="width: 0%; background-color: var(--primary-dark);"></div>
+                            </div>
+                        </div>
+
+                        <div class="theme-subtle p-3 rounded-xl space-y-1.5">
+                            <div class="flex justify-between text-xs font-extrabold">
+                                <span>Study Hours (Target: 800h)</span>
+                                <span id="p100HrsBarLabel">0%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-white/70 rounded-full overflow-hidden">
+                                <div id="p100HrsBar" class="h-full transition-all duration-300" style="width: 0%; background-color: var(--primary-dark);"></div>
+                            </div>
+                        </div>
+
+                        <div class="theme-subtle p-3 rounded-xl space-y-1.5">
+                            <div class="flex justify-between text-xs font-extrabold">
+                                <span>Total Qs + PYQs (Target: 5000)</span>
+                                <span id="p100QsBarLabel">0%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-white/70 rounded-full overflow-hidden">
+                                <div id="p100QsBar" class="h-full transition-all duration-300" style="width: 0%; background-color: var(--primary-dark);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5">
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">Total Study Hours</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1"><span id="anTotHours">0.0</span> <small class="text-xs">hrs</small></p>
+                        <span id="anAvgHours" class="text-[11px] font-bold theme-text-muted block mt-1">Avg: 0.0 hrs/day</span>
+                    </div>
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">Total Questions + PYQs</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1" id="anTotQuestions">0</p>
+                        <span id="anPyqSplit" class="text-[11px] font-bold theme-text-muted block mt-1">0 Practice • 0 PYQs</span>
+                    </div>
+
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">Lectures Completed</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1" id="anTotLectures">0</p>
+                        <span id="anLecRate" class="text-[11px] font-bold theme-text-muted block mt-1">Avg: 0.0 lecs/day</span>
+                    </div>
+
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">Mock Test Average</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1"><span id="anMockAvg">0</span> <small class="text-xs">/ 300</small></p>
+                        <span id="anMockBest" class="text-[11px] font-bold theme-text-muted block mt-1">Highest: 0 / 300</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-4">
+                        <h3 class="text-sm font-black uppercase pb-2 border-b theme-border">📚 100-Day Subject Study & Question Analysis</h3>
+                        <div id="anSubjectBreakdown" class="space-y-3.5"></div>
+                    </div>
+
+                    <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-4">
+                        <h3 class="text-sm font-black uppercase pb-2 border-b theme-border">🎯 Chapter Strength & Weakness Analysis (From Mocks)</h3>
+                        
+                        <div class="grid grid-cols-3 gap-2 text-center">
+                            <div class="theme-subtle p-2.5 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">Physics Avg</span>
+                                <span id="anMockPhyAvg" class="text-lg font-black">0</span>
+                            </div>
+                            <div class="theme-subtle p-2.5 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">Chemistry Avg</span>
+                                <span id="anMockChemAvg" class="text-lg font-black">0</span>
+                            </div>
+                            <div class="theme-subtle p-2.5 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">Math Avg</span>
+                                <span id="anMockMathAvg" class="text-lg font-black">0</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <span class="text-xs font-extrabold uppercase block mb-1.5">⚠️ Weak Chapters (Focus More Here):</span>
+                            <div id="anWeakChaptersBox" class="flex flex-wrap gap-1.5"></div>
+                        </div>
+
+                        <div>
+                            <span class="text-xs font-extrabold uppercase block mb-1.5">✅ Strong Chapters (High Accuracy):</span>
+                            <div id="anStrongChaptersBox" class="flex flex-wrap gap-1.5"></div>
+                        </div>
+                    </div>
+
+                    <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-4">
+                        <h3 class="text-sm font-black uppercase pb-2 border-b theme-border">💧 Health, Water, Sleep & Bio-Fuel Analysis</h3>
+                        
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center">
+                            <div class="theme-subtle p-3 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">Avg Water / Day</span>
+                                <span id="anAvgWater" class="text-lg font-black">0.0 L</span>
+                                <span id="anAvgGlasses" class="text-[10px] block opacity-80">0 glasses</span>
+                            </div>
+                            <div class="theme-subtle p-3 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">Avg Sleep / Day</span>
+                                <span id="anAvgSleep" class="text-lg font-black">0.0 hrs</span>
+                                <span class="text-[10px] block opacity-80">Target: 7h</span>
+                            </div>
+                            <div class="theme-subtle p-3 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">Total Exercise</span>
+                                <span id="anTotExMins" class="text-lg font-black">0 mins</span>
+                                <span id="anAvgExMins" class="text-[10px] block opacity-80">0m / day</span>
+                            </div>
+                            <div class="theme-subtle p-3 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">Meal Timing Log</span>
+                                <span id="anMealConsistency" class="text-lg font-black">0%</span>
+                                <span class="text-[10px] block opacity-80">Logged</span>
+                            </div>
+                        </div>
+
+                        <div id="anHealthVerdict" class="theme-subtle p-3 rounded-xl text-xs font-semibold"></div>
+                    </div>
+
+                    <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-4">
+                        <h3 class="text-sm font-black uppercase pb-2 border-b theme-border">📈 Syllabus & To-Do Execution Analysis</h3>
+                        
+                        <div class="space-y-2.5">
+                            <div class="flex justify-between text-xs font-extrabold">
+                                <span>Overall JEE Mains Syllabus Completed</span>
+                                <span id="anSylOverall">0%</span>
+                            </div>
+                            <div class="w-full h-3 rounded-full theme-subtle overflow-hidden">
+                                <div id="anSylBar" class="h-full" style="width: 0%; background-color: var(--primary-dark);"></div>
+                            </div>
+
+                            <div class="flex justify-between text-xs font-extrabold pt-2">
+                                <span>Daily Action To-Do Completion Rate</span>
+                                <span id="anTodoRate">0% (0/0)</span>
+                            </div>
+                            <div class="w-full h-3 rounded-full theme-subtle overflow-hidden">
+                                <div id="anTodoBar" class="h-full" style="width: 0%; background-color: var(--primary);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ================= ABOUT & BACKUP MODAL ================= -->
+    <div id="aboutModal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4">
+        <div class="theme-card rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b theme-border">
+                <div class="flex items-center gap-2">
+                    <span class="text-xl">🚀</span>
+                    <h3 class="text-base font-black uppercase tracking-tight">Mission 100 JEE</h3>
+                </div>
+                <button type="button" onclick="closeAboutModal()" class="text-xs font-black px-2 py-1 rounded theme-subtle cursor-pointer">✕</button>
+            </div>
+
+            <div class="space-y-2 text-xs">
+                <p class="font-extrabold text-sm" style="color: var(--primary);">Daily Command Center & 360° Preparation Tracker</p>
+                <div class="theme-subtle p-3 rounded-xl space-y-1 font-semibold leading-relaxed">
+                    <p>👨‍💻 <strong>Developed by:</strong> subhajit maity</p>
+                    <p>🎨 <strong>Designed by:</strong> gemini pro and argon 4</p>
+                    <p>📦 <strong>Version:</strong> <span class="px-2 py-0.5 rounded theme-badge font-black">v3.2.0</span></p>
+                </div>
+            </div>
+
+            <div class="pt-3 border-t theme-border space-y-2.5">
+                <span class="text-[11px] font-extrabold uppercase block opacity-80">Backup & Restore Your JEE Data:</span>
+                <div class="grid grid-cols-2 gap-2">
+                    <button type="button" onclick="downloadUserDataJson()" class="theme-btn-dark text-xs font-extrabold py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 cursor-pointer">
+                        <span>⬇️</span> Download (.json)
+                    </button>
+                    <button type="button" onclick="document.getElementById('uploadJsonInput').click()" class="theme-subtle text-xs font-extrabold py-2.5 px-3 rounded-xl border theme-border flex items-center justify-center gap-1.5 cursor-pointer hover:opacity-85">
+                        <span>⬆️</span> Upload (.json)
+                    </button>
+                </div>
+                <input type="file" id="uploadJsonInput" accept=".json" onchange="uploadUserDataJson(event)" class="hidden">
+            </div>
+
+            <div class="pt-2 text-right">
+                <button type="button" onclick="closeAboutModal()" class="theme-btn-primary text-xs font-extrabold px-4 py-2 rounded-xl cursor-pointer">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= RIGHT-SIDE SLIDE-OVER NOTIFICATIONS DRAWER ================= -->
+    <div id="ntaDrawerBackdrop" class="fixed inset-0 bg-black/60 z-50 hidden" onclick="toggleNtaDrawer(false)"></div>
+    <aside id="ntaDrawerPanel" class="fixed top-0 right-0 h-full w-full max-w-md z-50 theme-card shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col justify-between p-5">
+        <div class="overflow-y-auto pr-1">
+            <div class="flex items-center justify-between pb-3 mb-4 border-b theme-border">
+                <div class="flex items-center gap-2">
+                    <span class="text-lg">🔔</span>
+                    <div>
+                        <h3 class="text-sm font-black uppercase">Notifications</h3>
+                        <p class="text-[11px] theme-text-muted">Status alerts, official updates & custom reminders</p>
+                    </div>
+                </div>
+                <button type="button" onclick="toggleNtaDrawer(false)" class="px-2.5 py-1 rounded-lg text-xs font-black theme-subtle cursor-pointer">✕ Close</button>
+            </div>
+
+            <div class="theme-subtle p-3 rounded-xl mb-4 space-y-2">
+                <label class="text-[11px] font-extrabold uppercase block">Add New Exam Alert Note:</label>
+                <input type="text" id="newNtaMsgInput" placeholder="e.g. JEE Main Session 1 Registration starts in Nov..."
+                       onkeydown="if(event.key==='Enter'){ event.preventDefault(); addNtaMessage(); }"
+                       class="theme-input w-full text-xs px-3 py-2 rounded-lg">
+                <button type="button" onclick="addNtaMessage()" class="theme-btn-dark text-xs font-extrabold px-3 py-1.5 rounded-lg w-full cursor-pointer">
+                    + Pin Message
+                </button>
+            </div>
+
+            <div id="ntaMessagesList" class="space-y-2.5"></div>
+        </div>
+
+        <div class="pt-3 border-t theme-border flex justify-between items-center text-xs">
+            <a href="https://jeemain.nta.nic.in/" target="_blank" rel="noopener noreferrer" class="font-extrabold underline">Visit jeemain.nta.nic.in ↗</a>
+            <span class="theme-text-muted">Target: 22 Jan 2027</span>
+        </div>
+    </aside>
+
+    <!-- ================= RESET DAY CONFIRMATION MODAL ================= -->
+    <div id="resetDayModal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4">
+        <div class="theme-card rounded-2xl max-w-sm w-full p-5 shadow-2xl">
+            <h3 class="text-base font-black uppercase">Reset Selected Date?</h3>
+            <p class="text-xs theme-text-muted mt-2">
+                Are you sure you want to clear lectures, hours, questions, and health entries for <strong id="resetModalDateLabel">this date</strong>?
+            </p>
+            <div class="mt-4 flex justify-end gap-2">
+                <button type="button" onclick="closeResetDayModal()" class="px-4 py-2 rounded-xl text-xs font-extrabold theme-subtle cursor-pointer">Cancel</button>
+                <button type="button" onclick="confirmResetDay()" class="px-4 py-2 rounded-xl text-xs font-extrabold theme-btn-dark cursor-pointer">Yes, Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= APPLICATION JAVASCRIPT ================= -->
+    <script>
+        const COLOR_THEMES = [
+            {
+                id: 'teal',
+                name: '1. Classic Teal (Default)',
+                preview: '#0d9488',
+                vars: {
+                    '--bg-main': '#f0fdfa', '--bg-card': '#ffffff', '--bg-subtle': '#ccfbf1', '--bg-input': '#f0fdfa',
+                    '--text-main': '#042f2e', '--text-muted': '#115e59', '--primary': '#0d9488', '--primary-dark': '#042f2e',
+                    '--primary-light': '#5eead4', '--border-color': '#99f6e4', '--header-bg': '#042f2e', '--header-text': '#f0fdfa'
+                }
+            },
+            {
+                id: 'ocean',
+                name: '2. Ocean Blue (নীল)',
+                preview: '#0284c7',
+                vars: {
+                    '--bg-main': '#f0f9ff', '--bg-card': '#ffffff', '--bg-subtle': '#e0f2fe', '--bg-input': '#f0f9ff',
+                    '--text-main': '#082f49', '--text-muted': '#0369a1', '--primary': '#0284c7', '--primary-dark': '#082f49',
+                    '--primary-light': '#7dd3fc', '--border-color': '#bae6fd', '--header-bg': '#082f49', '--header-text': '#f0f9ff'
+                }
+            },
+            {
+                id: 'wood',
+                name: '3. White & Wood Brown (কাঠের কালার)',
+                preview: '#8b5a2b',
+                vars: {
+                    '--bg-main': '#faf6f0', '--bg-card': '#ffffff', '--bg-subtle': '#efe6d8', '--bg-input': '#fdfbf7',
+                    '--text-main': '#3e2723', '--text-muted': '#6d4c41', '--primary': '#8b5a2b', '--primary-dark': '#3e2723',
+                    '--primary-light': '#d7ccc8', '--border-color': '#d7c4b0', '--header-bg': '#3e2723', '--header-text': '#faf6f0'
+                }
+            },
+            {
+                id: 'sand',
+                name: '4. Warm Sand & Espresso',
+                preview: '#a16207',
+                vars: {
+                    '--bg-main': '#fefce8', '--bg-card': '#ffffff', '--bg-subtle': '#fef3c7', '--bg-input': '#fffbeb',
+                    '--text-main': '#422006', '--text-muted': '#713f12', '--primary': '#a16207', '--primary-dark': '#422006',
+                    '--primary-light': '#fde047', '--border-color': '#fde68a', '--header-bg': '#422006', '--header-text': '#fefce8'
+                }
+            },
+            {
+                id: 'emerald',
+                name: '5. Emerald Forest (সবুজ)',
+                preview: '#15803d',
+                vars: {
+                    '--bg-main': '#f0fdf4', '--bg-card': '#ffffff', '--bg-subtle': '#dcfce7', '--bg-input': '#f0fdf4',
+                    '--text-main': '#052e16', '--text-muted': '#166534', '--primary': '#15803d', '--primary-dark': '#052e16',
+                    '--primary-light': '#86efac', '--border-color': '#bbf7d0', '--header-bg': '#052e16', '--header-text': '#f0fdf4'
+                }
+            },
+            {
+                id: 'indigo',
+                name: '6. Royal Indigo',
+                preview: '#4f46e5',
+                vars: {
+                    '--bg-main': '#eef2ff', '--bg-card': '#ffffff', '--bg-subtle': '#e0e7ff', '--bg-input': '#eef2ff',
+                    '--text-main': '#1e1b4b', '--text-muted': '#3730a3', '--primary': '#4f46e5', '--primary-dark': '#1e1b4b',
+                    '--primary-light': '#a5b4fc', '--border-color': '#c7d2fe', '--header-bg': '#1e1b4b', '--header-text': '#eef2ff'
+                }
+            },
+            {
+                id: 'slate',
+                name: '7. Minimalist Monochrome Slate',
+                preview: '#475569',
+                vars: {
+                    '--bg-main': '#f8fafc', '--bg-card': '#ffffff', '--bg-subtle': '#e2e8f0', '--bg-input': '#f8fafc',
+                    '--text-main': '#0f172a', '--text-muted': '#475569', '--primary': '#334155', '--primary-dark': '#0f172a',
+                    '--primary-light': '#cbd5e1', '--border-color': '#cbd5e1', '--header-bg': '#0f172a', '--header-text': '#f8fafc'
+                }
+            },
+            {
+                id: 'crimson',
+                name: '8. Crimson Rose',
+                preview: '#be123c',
+                vars: {
+                    '--bg-main': '#fff1f2', '--bg-card': '#ffffff', '--bg-subtle': '#ffe4e6', '--bg-input': '#fff1f2',
+                    '--text-main': '#4c0519', '--text-muted': '#9f1239', '--primary': '#be123c', '--primary-dark': '#4c0519',
+                    '--primary-light': '#fda4af', '--border-color': '#fecdd3', '--header-bg': '#4c0519', '--header-text': '#fff1f2'
+                }
+            },
+            {
+                id: 'obsidian',
+                name: '9. Obsidian Dark Mode',
+                preview: '#18181b',
+                vars: {
+                    '--bg-main': '#09090b', '--bg-card': '#18181b', '--bg-subtle': '#27272a', '--bg-input': '#09090b',
+                    '--text-main': '#f4f4f5', '--text-muted': '#a1a1aa', '--primary': '#14b8a6', '--primary-dark': '#0d9488',
+                    '--primary-light': '#5eead4', '--border-color': '#3f3f46', '--header-bg': '#09090b', '--header-text': '#f4f4f5'
+                }
+            },
+            {
+                id: 'midnight',
+                name: '10. Midnight Blue Dark',
+                preview: '#0f172a',
+                vars: {
+                    '--bg-main': '#020617', '--bg-card': '#0f172a', '--bg-subtle': '#1e293b', '--bg-input': '#020617',
+                    '--text-main': '#f8fafc', '--text-muted': '#94a3b8', '--primary': '#38bdf8', '--primary-dark': '#0284c7',
+                    '--primary-light': '#7dd3fc', '--border-color': '#334155', '--header-bg': '#020617', '--header-text': '#f8fafc'
+                }
+            }
+        ];
+
+        function applyTheme(themeId) {
+            const found = COLOR_THEMES.find(t => t.id === themeId) || COLOR_THEMES[0];
+            const root = document.documentElement;
+            Object.keys(found.vars).forEach(k => {
+                root.style.setProperty(k, found.vars[k]);
+            });
+            localStorage.setItem('mission100_theme', found.id);
+            const labelEl = document.getElementById('currentThemeLabel');
+            if (labelEl) labelEl.textContent = found.name.replace(/^\d+\.\s*/, '').split('(')[0].trim();
+            renderThemeMenu();
+        }
+
+        function toggleThemeMenu() {
+            const menu = document.getElementById('themeDropdown');
+            if (!menu) return;
+            menu.classList.toggle('hidden');
+        }
+
+        function renderThemeMenu() {
+            const container = document.getElementById('themeListContainer');
+            if (!container) return;
+            const activeId = localStorage.getItem('mission100_theme') || 'teal';
+            container.innerHTML = '';
+
+            COLOR_THEMES.forEach(theme => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                const isSelected = theme.id === activeId;
+                btn.className = `w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-extrabold border transition cursor-pointer ${
+                    isSelected ? 'theme-subtle' : 'hover:opacity-80'
+                }`;
+                btn.style.borderColor = 'var(--border-color)';
+                btn.onclick = () => {
+                    applyTheme(theme.id);
+                    document.getElementById('themeDropdown').classList.add('hidden');
+                };
+
+                btn.innerHTML = `
+                    <span class="flex items-center gap-2">
+                        <span class="w-4 h-4 rounded-full border border-black/20 inline-block shrink-0" style="background-color: ${theme.preview};"></span>
+                        <span>${theme.name}</span>
+                    </span>
+                    ${isSelected ? '<span>✓</span>' : ''}
+                `;
+                container.appendChild(btn);
+            });
+        }
+
+        function updateLiveCountdown() {
+            const target = new Date(2027, 0, 22, 0, 0, 0);
+            const now = new Date();
+            const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            const diffDays = Math.max(0, Math.round((target - todayMidnight) / (1000 * 60 * 60 * 24)));
+            const el = document.getElementById('daysLeftValue');
+            if (el) el.textContent = diffDays;
+        }
+
+        function getLocalYYYYMMDD(dateObj = new Date()) {
+            const y = dateObj.getFullYear();
+            const m = String(dateObj.getMonth() + 1).padStart(2, '0');
+            const d = String(dateObj.getDate()).padStart(2, '0');
+            return `${y}-${m}-${d}`;
+        }
+
+        function parseYYYYMMDD(str) {
+            const parts = (str || '').split('-');
+            if (parts.length !== 3) return new Date();
+            return new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+        }
+
+        let activeDateStr = getLocalYYYYMMDD();
+        let showBacklogLectures = false;
+        let currentDayData = {};
+
+        function defaultDayState() {
+            return {
+                lectures: [
+                    { done: false, sub: 'Physics', topic: '', link: '' },
+                    { done: false, sub: 'Chemistry', topic: '', link: '' },
+                    { done: false, sub: 'Mathematics', topic: '', link: '' },
+                    { done: false, sub: 'Physics', topic: '', link: '' },
+                    { done: false, sub: 'Chemistry', topic: '', link: '' }
+                ],
+                extraSelfHours: '',
+                phyHrs: '', phyQs: '', phyPyq: '',
+                chemHrs: '', chemQs: '', chemPyq: '',
+                mathHrs: '', mathQs: '', mathPyq: '',
+                todos: [],
+                water: 0,
+                sleepHrs: '', sleepTime: '',
+                exType: '', exMins: '', exTime: '',
+                mealBreakfastTime: '', mealBreakfast: '',
+                mealLunchTime: '', mealLunch: '',
+                mealSnacksTime: '', mealSnacks: '',
+                mealDinnerTime: '', mealDinner: ''
+            };
+        }
+
+        function getDayStorageKey(dateStr) {
+            return `mission100_day_${dateStr}`;
+        }
+
+        function loadDateRecord(dateStr) {
+            activeDateStr = dateStr;
+            const raw = localStorage.getItem(getDayStorageKey(dateStr));
+            if (raw) {
+                try {
+                    const parsed = JSON.parse(raw);
+                    currentDayData = { ...defaultDayState(), ...parsed };
+                    if (!Array.isArray(currentDayData.lectures) || currentDayData.lectures.length < 5) {
+                        const defLecs = defaultDayState().lectures;
+                        currentDayData.lectures = defLecs.map((d, i) => (parsed.lectures && parsed.lectures[i]) ? { ...d, ...parsed.lectures[i] } : d);
+                    }
+                    if (!Array.isArray(currentDayData.todos)) currentDayData.todos = [];
+                } catch (e) {
+                    currentDayData = defaultDayState();
+                }
+            } else {
+                currentDayData = defaultDayState();
+            }
+
+            if (currentDayData.lectures[3].done || currentDayData.lectures[3].topic || currentDayData.lectures[4].done || currentDayData.lectures[4].topic) {
+                showBacklogLectures = true;
+            }
+
+            updateDateHeaderUI();
+            renderDayTrackerUI();
+            if (!document.getElementById('tabContent-analytics').classList.contains('hidden')) {
+                render360Analysis();
+            }
+        }
+
+        function saveCurrentDayRecord() {
+            localStorage.setItem(getDayStorageKey(activeDateStr), JSON.stringify(currentDayData));
+            const badge = document.getElementById('autoSaveBadge');
+            if (badge) {
+                badge.textContent = '✓ Saved just now!';
+                setTimeout(() => { badge.textContent = '✓ All changes auto-saved'; }, 1200);
+            }
+            updateLiveCalculations();
+            renderSevenDayStrip();
+            renderNotifications();
+        }
+
+        function updateDateHeaderUI() {
+            const dt = parseYYYYMMDD(activeDateStr);
+            const dd = String(dt.getDate()).padStart(2, '0');
+            const mm = String(dt.getMonth() + 1).padStart(2, '0');
+            const yyyy = dt.getFullYear();
+
+            const monthsShort = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+            const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+            document.getElementById('dateBoxDay').textContent = dd;
+            document.getElementById('dateBoxMonth').textContent = monthsShort[dt.getMonth()];
+            document.getElementById('ddmmyyyyDisplay').textContent = `${dd} / ${mm} / ${yyyy}`;
+            document.getElementById('weekdayDisplay').textContent = weekdays[dt.getDay()];
+
+            const picker = document.getElementById('nativeDatePicker');
+            if (picker && picker.value !== activeDateStr) {
+                picker.value = activeDateStr;
+            }
+
+            renderSevenDayStrip();
+        }
+
+        function renderSevenDayStrip() {
+            const strip = document.getElementById('sevenDayStrip');
+            if (!strip) return;
+            strip.innerHTML = '';
+
+            const centerDate = parseYYYYMMDD(activeDateStr);
+            const shortDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+            for (let offset = -3; offset <= 3; offset++) {
+                const d = new Date(centerDate);
+                d.setDate(d.getDate() + offset);
+                const dStr = getLocalYYYYMMDD(d);
+                const isSelected = dStr === activeDateStr;
+                const hasSaved = !!localStorage.getItem(getDayStorageKey(dStr));
+
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = `py-1.5 px-1 rounded-xl text-center transition border cursor-pointer flex flex-col items-center ${
+                    isSelected ? 'tab-btn-active' : 'theme-subtle hover:opacity-85'
+                }`;
+                btn.onclick = () => loadDateRecord(dStr);
+
+                const dd = String(d.getDate()).padStart(2, '0');
+                const mm = String(d.getMonth() + 1).padStart(2, '0');
+
+                btn.innerHTML = `
+                    <span class="text-[10px] font-bold opacity-80">${shortDays[d.getDay()]}</span>
+                    <span class="text-xs sm:text-sm font-black mt-0.5">${dd}/${mm}</span>
+                    <span class="w-1.5 h-1.5 rounded-full mt-1 ${hasSaved ? 'bg-current opacity-90' : 'opacity-0'}"></span>
+                `;
+                strip.appendChild(btn);
+            }
+        }
+
+        function changeDateByOffset(days) {
+            const d = parseYYYYMMDD(activeDateStr);
+            d.setDate(d.getDate() + days);
+            loadDateRecord(getLocalYYYYMMDD(d));
+        }
+
+        function jumpToToday() {
+            loadDateRecord(getLocalYYYYMMDD(new Date()));
+        }
+
+        function onNativeDateChange(val) {
+            if (val) loadDateRecord(val);
+        }
+
+        function renderLectureSlots() {
+            const container = document.getElementById('lectureSlotsContainer');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const maxSlots = showBacklogLectures ? 5 : 3;
+            for (let i = 0; i < maxSlots; i++) {
+                const lec = currentDayData.lectures[i];
+                const isBacklog = i >= 3;
+
+                const div = document.createElement('div');
+                div.className = 'theme-subtle p-3 rounded-xl space-y-2';
+
+                div.innerHTML = `
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+                        <div class="flex items-center gap-2 shrink-0">
+                            <input type="checkbox" ${lec.done ? 'checked' : ''} onchange="updateLectureSlot(${i}, 'done', this.checked)" class="w-5 h-5 rounded">
+                            <span class="text-xs font-black uppercase px-2 py-0.5 rounded" style="background-color: var(--primary-dark); color: #fff;">
+                                ${isBacklog ? `Backlog #${i + 1}` : `Lec #${i + 1}`}
+                            </span>
+                            <select onchange="updateLectureSlot(${i}, 'sub', this.value)" class="theme-input text-xs font-extrabold px-2 py-1.5 rounded-lg">
+                                <option value="Physics" ${lec.sub === 'Physics' ? 'selected' : ''}>Physics</option>
+                                <option value="Chemistry" ${lec.sub === 'Chemistry' ? 'selected' : ''}>Chemistry</option>
+                                <option value="Mathematics" ${lec.sub === 'Mathematics' ? 'selected' : ''}>Mathematics</option>
+                            </select>
+                        </div>
+                        <input type="text" value="${escapeAttr(lec.topic)}" placeholder="Chapter / Lecture Name & Notes..."
+                               oninput="updateLectureSlot(${i}, 'topic', this.value)"
+                               class="theme-input w-full text-xs sm:text-sm font-medium px-3 py-1.5 rounded-lg">
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input type="url" value="${escapeAttr(lec.link)}" placeholder="Paste Lecture Video / Notes Link (https://...)"
+                               oninput="updateLectureSlot(${i}, 'link', this.value)"
+                               class="theme-input w-full text-xs px-3 py-1.5 rounded-lg">
+                        <button type="button" onclick="openLectureUrl(${i})" class="theme-btn-dark text-xs font-extrabold px-3 py-1.5 rounded-lg shrink-0 cursor-pointer">
+                            Open ↗
+                        </button>
+                    </div>
+                `;
+                container.appendChild(div);
+            }
+
+            const toggleBtn = document.getElementById('toggleBacklogBtn');
+            if (toggleBtn) {
+                toggleBtn.textContent = showBacklogLectures
+                    ? '− Hide Extra / Backlog Lecture Slots (#4 & #5)'
+                    : '+ Show 2 Extra / Backlog Lecture Slots (Lecture #4 & #5)';
+            }
+        }
+
+        function updateLectureSlot(index, key, val) {
+            if (!currentDayData.lectures[index]) return;
+            currentDayData.lectures[index][key] = val;
+            saveCurrentDayRecord();
+        }
+
+        function toggleBacklogSlots() {
+            showBacklogLectures = !showBacklogLectures;
+            renderLectureSlots();
+            updateLiveCalculations();
+        }
+
+        function openLectureUrl(index) {
+            const raw = (currentDayData.lectures[index]?.link || '').trim();
+            if (!raw) {
+                window.open('https://vidcloud.eu.org/#BatchDetails/batch/6aa790b23e605f161edbf979', '_blank', 'noopener,noreferrer');
+                return;
+            }
+            const url = /^https?:\/\//i.test(raw) ? raw : `https://${raw}`;
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
+
+        function escapeAttr(str) {
+            return String(str || '').replace(/"/g, '&quot;');
+        }
+
+        const SIMPLE_FIELDS = [
+            'extraSelfHours',
+            'phyHrs', 'phyQs', 'phyPyq',
+            'chemHrs', 'chemQs', 'chemPyq',
+            'mathHrs', 'mathQs', 'mathPyq',
+            'sleepHrs', 'sleepTime',
+            'exType', 'exMins', 'exTime',
+            'mealBreakfastTime', 'mealBreakfast',
+            'mealLunchTime', 'mealLunch',
+            'mealSnacksTime', 'mealSnacks',
+            'mealDinnerTime', 'mealDinner'
+        ];
+        function updateField(fieldId, value) {
+            currentDayData[fieldId] = value;
+            saveCurrentDayRecord();
+        }
+
+        function renderWaterButtons() {
+            const grid = document.getElementById('waterButtonsGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            const currentWater = Number(currentDayData.water) || 0;
+
+            for (let i = 1; i <= 12; i++) {
+                const active = i <= currentWater;
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = `h-9 rounded-xl font-black text-xs border transition cursor-pointer ${
+                    active ? 'theme-btn-dark shadow-xs' : 'theme-card hover:opacity-80'
+                }`;
+                btn.textContent = i;
+                btn.onclick = () => {
+                    currentDayData.water = (currentDayData.water === i) ? i - 1 : i;
+                    renderWaterButtons();
+                    saveCurrentDayRecord();
+                };
+                grid.appendChild(btn);
+            }
+
+            document.getElementById('waterGlassesCount').textContent = currentWater;
+            document.getElementById('waterLitersCount').textContent = (currentWater * 0.25).toFixed(2);
+        }
+
+        function renderTodoList() {
+            const ul = document.getElementById('todoListUl');
+            if (!ul) return;
+            ul.innerHTML = '';
+
+            const todos = Array.isArray(currentDayData.todos) ? currentDayData.todos : [];
+
+            if (todos.length === 0) {
+                ul.innerHTML = `
+                    <li class="text-center py-6 text-xs theme-text-muted rounded-xl border border-dashed theme-border">
+                        No tasks added yet for this date. Click a quick tag above or type your target!
+                    </li>
+                `;
+            } else {
+                todos.forEach((item, idx) => {
+                    const li = document.createElement('li');
+                    li.className = `flex items-center justify-between px-3.5 py-2.5 rounded-xl theme-subtle`;
+
+                    const left = document.createElement('label');
+                    left.className = 'flex items-center gap-2.5 cursor-pointer flex-1 pr-2';
+
+                    const chk = document.createElement('input');
+                    chk.type = 'checkbox';
+                    chk.checked = !!item.done;
+                    chk.className = 'w-4 h-4 rounded shrink-0';
+                    chk.onchange = (e) => {
+                        currentDayData.todos[idx].done = e.target.checked;
+                        renderTodoList();
+                        saveCurrentDayRecord();
+                    };
+
+                    const txt = document.createElement('span');
+                    txt.className = `text-xs sm:text-sm font-bold ${item.done ? 'line-through opacity-60' : ''}`;
+                    txt.textContent = item.text;
+
+                    left.appendChild(chk);
+                    left.appendChild(txt);
+
+                    const del = document.createElement('button');
+                    del.type = 'button';
+                    del.className = 'text-xs font-black px-2 py-1 rounded hover:bg-black/10 cursor-pointer';
+                    del.textContent = '✕';
+                    del.onclick = () => {
+                        currentDayData.todos.splice(idx, 1);
+                        renderTodoList();
+                        saveCurrentDayRecord();
+                    };
+
+                    li.appendChild(left);
+                    li.appendChild(del);
+                    ul.appendChild(li);
+                });
+            }
+
+            const doneCount = todos.filter(t => t.done).length;
+            const badge = document.getElementById('todoProgressBadge');
+            if (badge) badge.textContent = `${doneCount} / ${todos.length} Done`;
+        }
+
+        function addNewTodoFromInput() {
+            const inp = document.getElementById('todoInputBox');
+            if (!inp) return;
+            const text = inp.value.trim();
+            if (!text) return;
+            currentDayData.todos.push({ text, done: false });
+            inp.value = '';
+            renderTodoList();
+            saveCurrentDayRecord();
+        }
+
+        function quickAddTodo(presetText) {
+            if (!presetText) return;
+            currentDayData.todos.push({ text: presetText, done: false });
+            renderTodoList();
+            saveCurrentDayRecord();
+        }
+
+        function clearCompletedTodos() {
+            currentDayData.todos = (currentDayData.todos || []).filter(t => !t.done);
+            renderTodoList();
+            saveCurrentDayRecord();
+        }
+
+        function renderDayTrackerUI() {
+            renderLectureSlots();
+            SIMPLE_FIELDS.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.value = currentDayData[id] !== undefined ? currentDayData[id] : '';
+            });
+            renderWaterButtons();
+            renderTodoList();
+            updateLiveCalculations();
+        }
+
+        function numVal(v) {
+            const n = parseFloat(v);
+            return isNaN(n) || n < 0 ? 0 : n;
+        }
+
+        function updateLiveCalculations() {
+            const lecs = currentDayData.lectures || [];
+            const doneLecs = lecs.filter(l => l.done).length;
+            const maxLecs = showBacklogLectures ? 5 : 3;
+
+            const phyH = numVal(currentDayData.phyHrs);
+            const chemH = numVal(currentDayData.chemHrs);
+            const mathH = numVal(currentDayData.mathHrs);
+            const selfH = numVal(currentDayData.extraSelfHours);
+            const pcmH = phyH + chemH + mathH;
+            const totalH = pcmH + selfH;
+
+            const phyQ = Math.round(numVal(currentDayData.phyQs));
+            const chemQ = Math.round(numVal(currentDayData.chemQs));
+            const mathQ = Math.round(numVal(currentDayData.mathQs));
+            const totPracQ = phyQ + chemQ + mathQ;
+
+            const phyP = Math.round(numVal(currentDayData.phyPyq));
+            const chemP = Math.round(numVal(currentDayData.chemPyq));
+            const mathP = Math.round(numVal(currentDayData.mathPyq));
+            const totPyq = phyP + chemP + mathP;
+
+            document.getElementById('topSumLectures').textContent = doneLecs;
+            document.getElementById('topSumLecturesMax').textContent = maxLecs;
+            document.getElementById('topSumLecPct').textContent = `${Math.min(100, Math.round((doneLecs / maxLecs) * 100))}%`;
+
+            document.getElementById('topSumHours').textContent = totalH.toFixed(1);
+            document.getElementById('topSumHrsTag').textContent = totalH >= 8 ? '🔥 Great Pace' : 'PCM + Self';
+
+            document.getElementById('topSumTotalQ').textContent = totPracQ + totPyq;
+            document.getElementById('topSumPyq').textContent = totPyq;
+
+            const waterL = ((Number(currentDayData.water) || 0) * 0.25).toFixed(1);
+            document.getElementById('topSumWaterL').textContent = waterL;
+            document.getElementById('topSumSleep').textContent = numVal(currentDayData.sleepHrs);
+            document.getElementById('topSumEx').textContent = Math.round(numVal(currentDayData.exMins));
+
+            document.getElementById('phySubTotalBadge').textContent = `${phyH.toFixed(1)} hrs • ${phyQ + phyP} Total Qs`;
+            document.getElementById('chemSubTotalBadge').textContent = `${chemH.toFixed(1)} hrs • ${chemQ + chemP} Total Qs`;
+            document.getElementById('mathSubTotalBadge').textContent = `${mathH.toFixed(1)} hrs • ${mathQ + mathP} Total Qs`;
+
+            document.getElementById('matrixFooterHours').textContent = `${pcmH.toFixed(1)} Hrs`;
+            document.getElementById('matrixFooterQs').textContent = `${totPracQ} Practice Qs`;
+            document.getElementById('matrixFooterPyqs').textContent = `${totPyq} PYQs`;
+        }
+
+        const JEE_SYLLABUS = {
+            Physics: [
+                "Units & Measurements", "Kinematics", "Laws of Motion", "Work, Energy & Power",
+                "Rotational Motion", "Gravitation", "Properties of Solids & Liquids", "Thermodynamics",
+                "Kinetic Theory of Gases", "Oscillations & Waves", "Electrostatics", "Current Electricity",
+                "Magnetic Effects of Current & Magnetism", "Electromagnetic Induction & AC", "Electromagnetic Waves",
+                "Ray & Wave Optics", "Dual Nature of Matter & Radiation", "Atoms & Nuclei",
+                "Electronic Devices (Semiconductors)", "Experimental Physics"
+            ],
+            Chemistry: [
+                "Some Basic Concepts in Chemistry (Mole)", "Atomic Structure", "Chemical Bonding & Molecular Structure",
+                "Chemical Thermodynamics", "Solutions", "Equilibrium (Chemical & Ionic)",
+                "Redox Reactions & Electrochemistry", "Chemical Kinetics", "Classification of Elements & Periodicity",
+                "p-Block Elements", "d- and f-Block Elements", "Coordination Compounds",
+                "Purification & Characterisation of Organic Compounds", "Some Basic Principles of Organic Chemistry (GOC)",
+                "Hydrocarbons", "Organic Compounds Containing Halogens", "Organic Compounds Containing Oxygen",
+                "Organic Compounds Containing Nitrogen", "Biomolecules", "Principles Related to Practical Chemistry"
+            ],
+            Mathematics: [
+                "Sets, Relations & Functions", "Complex Numbers & Quadratic Equations", "Matrices & Determinants",
+                "Permutations & Combinations", "Binomial Theorem & Its Simple Applications", "Sequence & Series",
+                "Limit, Continuity & Differentiability", "Integral Calculus", "Differential Equations",
+                "Coordinate Geometry (Straight Lines & Circles)", "Conic Sections (Parabola, Ellipse, Hyperbola)",
+                "Three Dimensional Geometry (3D)", "Vector Algebra", "Statistics & Probability",
+                "Trigonometry", "Mathematical Reasoning / Miscellaneous"
+            ]
+        };
+
+        let activeSyllabusSubject = 'Physics';
+
+        function getSyllabusState() {
+            try {
+                const raw = localStorage.getItem('mission100_syllabus');
+                return raw ? JSON.parse(raw) : {};
+            } catch (e) {
+                return {};
+            }
+        }
+
+        function saveSyllabusState(state) {
+            localStorage.setItem('mission100_syllabus', JSON.stringify(state));
+            updateSyllabusProgressBars();
+            renderNotifications();
+        }
+
+        function filterSyllabus(subject) {
+            activeSyllabusSubject = subject;
+            ['Physics', 'Chemistry', 'Mathematics'].forEach(sub => {
+                const btn = document.getElementById(`sylFilter-${sub}`);
+                if (btn) {
+                    btn.className = sub === subject
+                        ? 'px-4 py-2 rounded-xl text-xs font-extrabold theme-btn-dark cursor-pointer'
+                        : 'px-4 py-2 rounded-xl text-xs font-extrabold theme-subtle cursor-pointer';
+                }
+            });
+            renderSyllabusChapters();
+        }
+
+        function renderSyllabusChapters() {
+            const grid = document.getElementById('syllabusChaptersGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            const state = getSyllabusState();
+            const chapters = JEE_SYLLABUS[activeSyllabusSubject] || [];
+
+            chapters.forEach((chap, idx) => {
+                const key = `${activeSyllabusSubject}_${idx}`;
+                const item = state[key] || { theory: false, pyq: false, rev: false };
+                const doneCount = [item.theory, item.pyq, item.rev].filter(Boolean).length;
+
+                const card = document.createElement('div');
+                card.className = 'theme-card p-3.5 rounded-2xl flex flex-col justify-between gap-2.5';
+                card.innerHTML = `
+                    <div class="flex items-start justify-between gap-2">
+                        <span class="text-xs sm:text-sm font-extrabold">${idx + 1}. ${chap}</span>
+                        <span class="text-[10px] font-black px-2 py-0.5 rounded theme-badge shrink-0">${doneCount}/3</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 pt-2 border-t theme-border text-xs font-bold">
+                        <label class="flex items-center gap-1.5 cursor-pointer theme-subtle px-2.5 py-1.5 rounded-lg">
+                            <input type="checkbox" ${item.theory ? 'checked' : ''} onchange="toggleSyllabusTick('${key}', 'theory', this.checked)">
+                            <span>Theory</span>
+                        </label>
+                        <label class="flex items-center gap-1.5 cursor-pointer theme-subtle px-2.5 py-1.5 rounded-lg">
+                            <input type="checkbox" ${item.pyq ? 'checked' : ''} onchange="toggleSyllabusTick('${key}', 'pyq', this.checked)">
+                            <span>PYQs</span>
+                        </label>
+                        <label class="flex items-center gap-1.5 cursor-pointer theme-subtle px-2.5 py-1.5 rounded-lg">
+                            <input type="checkbox" ${item.rev ? 'checked' : ''} onchange="toggleSyllabusTick('${key}', 'rev', this.checked)">
+                            <span>Revision</span>
+                        </label>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            updateSyllabusProgressBars();
+        }
+
+        function toggleSyllabusTick(key, field, checked) {
+            const state = getSyllabusState();
+            if (!state[key]) state[key] = { theory: false, pyq: false, rev: false };
+            state[key][field] = checked;
+            saveSyllabusState(state);
+            renderSyllabusChapters();
+        }
+
+        function computeSyllabusPercentages() {
+            const state = getSyllabusState();
+            const stats = {};
+            let totalPossible = 0;
+            let totalDone = 0;
+
+            ['Physics', 'Chemistry', 'Mathematics'].forEach(sub => {
+                const chaps = JEE_SYLLABUS[sub];
+                const possible = chaps.length * 3;
+                let done = 0;
+                chaps.forEach((_, idx) => {
+                    const st = state[`${sub}_${idx}`];
+                    if (st) {
+                        if (st.theory) done++;
+                        if (st.pyq) done++;
+                        if (st.rev) done++;
+                    }
+                });
+                stats[sub] = Math.round((done / possible) * 100);
+                totalPossible += possible;
+                totalDone += done;
+            });
+
+            stats.overall = totalPossible > 0 ? Math.round((totalDone / totalPossible) * 100) : 0;
+            return stats;
+        }
+
+        function updateSyllabusProgressBars() {
+            const stats = computeSyllabusPercentages();
+            document.getElementById('overallSyllabusBadge').textContent = `Overall: ${stats.overall}%`;
+            document.getElementById('phySylPct').textContent = `${stats.Physics}%`;
+            document.getElementById('phySylBar').style.width = `${stats.Physics}%`;
+            document.getElementById('chemSylPct').textContent = `${stats.Chemistry}%`;
+            document.getElementById('chemSylBar').style.width = `${stats.Chemistry}%`;
+            document.getElementById('mathSylPct').textContent = `${stats.Mathematics}%`;
+            document.getElementById('mathSylBar').style.width = `${stats.Mathematics}%`;
+        }
+
+        /* Mock Test Placeholder Calculation (Full Marks / 3) */
+        function updateMockPlaceholders() {
+            const maxVal = numVal(document.getElementById('mockMax').value) || 300;
+            const perSubject = Math.round(maxVal / 3);
+            const placeholderText = `Out of ${perSubject}`;
+            const pInput = document.getElementById('mockPhy');
+            const cInput = document.getElementById('mockChem');
+            const mInput = document.getElementById('mockMath');
+            if (pInput) pInput.placeholder = placeholderText;
+            if (cInput) cInput.placeholder = placeholderText;
+            if (mInput) mInput.placeholder = placeholderText;
+        }
+
+        function getMockTests() {
+            try {
+                const raw = localStorage.getItem('mission100_mocks');
+                return raw ? JSON.parse(raw) : [];
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function saveMockTest() {
+            const name = document.getElementById('mockName').value.trim() || 'Mock Test';
+            const date = document.getElementById('mockDate').value || activeDateStr;
+            const max = numVal(document.getElementById('mockMax').value) || 300;
+            const phy = numVal(document.getElementById('mockPhy').value);
+            const chem = numVal(document.getElementById('mockChem').value);
+            const math = numVal(document.getElementById('mockMath').value);
+            const strong = document.getElementById('mockStrong').value.trim();
+            const weak = document.getElementById('mockWeak').value.trim();
+
+            const list = getMockTests();
+            list.unshift({
+                id: Date.now(),
+                name, date, max,
+                phy, chem, math,
+                total: phy + chem + math,
+                strong, weak
+            });
+            localStorage.setItem('mission100_mocks', JSON.stringify(list));
+
+            document.getElementById('mockName').value = '';
+            document.getElementById('mockPhy').value = '';
+            document.getElementById('mockChem').value = '';
+            document.getElementById('mockMath').value = '';
+            document.getElementById('mockStrong').value = '';
+            document.getElementById('mockWeak').value = '';
+
+            renderMockHistory();
+            renderNotifications();
+        }
+
+        function deleteMockTest(id) {
+            const list = getMockTests().filter(m => m.id !== id);
+            localStorage.setItem('mission100_mocks', JSON.stringify(list));
+            renderMockHistory();
+            renderNotifications();
+        }
+
+        function renderMockHistory() {
+            const container = document.getElementById('mockHistoryList');
+            if (!container) return;
+            const list = getMockTests();
+            container.innerHTML = '';
+
+            if (list.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-6 text-xs theme-text-muted rounded-xl border border-dashed theme-border">
+                        No mock tests logged yet. Use the form above after taking any test!
+                    </div>
+                `;
+                return;
+            }
+
+            list.forEach(m => {
+                const div = document.createElement('div');
+                div.className = 'theme-subtle p-4 rounded-2xl space-y-2';
+                div.innerHTML = `
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <div>
+                            <span class="text-sm font-black">${m.name}</span>
+                            <span class="text-xs font-bold theme-text-muted ml-2">(${m.date})</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm font-black px-3 py-1 rounded-xl theme-btn-dark">Total: ${m.total} / ${m.max}</span>
+                            <button type="button" onclick="deleteMockTest(${m.id})" class="text-xs font-black px-2 py-1 rounded hover:bg-black/10 cursor-pointer">✕</button>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 text-xs font-extrabold">
+                        <div class="theme-card p-2 rounded-lg text-center">⚡ Physics: ${m.phy}</div>
+                        <div class="theme-card p-2 rounded-lg text-center">🧪 Chemistry: ${m.chem}</div>
+                        <div class="theme-card p-2 rounded-lg text-center">📐 Math: ${m.math}</div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1">
+                        <div><strong class="uppercase">✅ Strong:</strong> ${m.strong || '—'}</div>
+                        <div><strong class="uppercase">⚠️ Weak:</strong> ${m.weak || '—'}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        let activeAnalysisMode = '1day';
+
+        function switchAnalysisMode(mode) {
+            activeAnalysisMode = mode;
+            ['1day', '2week', '100day'].forEach(m => {
+                const btn = document.getElementById(`anBtn-${m}`);
+                const view = document.getElementById(`anView-${m}`);
+                if (btn) btn.classList.toggle('tab-btn-active', m === mode);
+                if (view) view.classList.toggle('hidden', m !== mode);
+            });
+            render360Analysis();
+        }
+
+        function parseDayStats(d) {
+            if (!d) return { hasActivity: false, pH:0, cH:0, mH:0, sH:0, totalH:0, pQ:0, cQ:0, mQ:0, pracQ:0, pP:0, cP:0, mP:0, pyqQ:0, totalQ:0, lDone:0, wG:0, slH:0, exM:0, meals:0, todoTotal:0, todoDone:0 };
+            const pH = numVal(d.phyHrs), cH = numVal(d.chemHrs), mH = numVal(d.mathHrs), sH = numVal(d.extraSelfHours);
+            const totalH = pH + cH + mH + sH;
+            const pQ = numVal(d.phyQs), cQ = numVal(d.chemQs), mQ = numVal(d.mathQs);
+            const pracQ = pQ + cQ + mQ;
+            const pP = numVal(d.phyPyq), cP = numVal(d.chemPyq), mP = numVal(d.mathPyq);
+            const pyqQ = pP + cP + mP;
+            const totalQ = pracQ + pyqQ;
+            const lDone = Array.isArray(d.lectures) ? d.lectures.filter(l => l.done).length : 0;
+            const wG = Number(d.water) || 0;
+            const slH = numVal(d.sleepHrs);
+            const exM = numVal(d.exMins);
+
+            let meals = 0;
+            if (d.mealBreakfast || d.mealBreakfastTime) meals++;
+            if (d.mealLunch || d.mealLunchTime) meals++;
+            if (d.mealSnacks || d.mealSnacksTime) meals++;
+            if (d.mealDinner || d.mealDinnerTime) meals++;
+
+            const todoTotal = Array.isArray(d.todos) ? d.todos.length : 0;
+            const todoDone = Array.isArray(d.todos) ? d.todos.filter(t => t.done).length : 0;
+            const hasActivity = (totalH + totalQ + lDone + wG + slH + exM + todoTotal) > 0;
+
+            return { hasActivity, pH, cH, mH, sH, totalH, pQ, cQ, mQ, pracQ, pP, cP, mP, pyqQ, totalQ, lDone, wG, slH, exM, meals, todoTotal, todoDone };
+        }
+
+        function renderSubjectBarsHTML(pH, cH, mH, pQ, cQ, mQ, pP, cP, mP) {
+            const pcmTotal = Math.max(0.1, pH + cH + mH);
+            const rows = [
+                { name: '⚡ Physics', hrs: pH, q: pQ, pyq: pP, pct: (pH + cH + mH) > 0 ? Math.round((pH / pcmTotal) * 100) : 0 },
+                { name: '🧪 Chemistry', hrs: cH, q: cQ, pyq: cP, pct: (pH + cH + mH) > 0 ? Math.round((cH / pcmTotal) * 100) : 0 },
+                { name: '📐 Mathematics', hrs: mH, q: mQ, pyq: mP, pct: (pH + cH + mH) > 0 ? Math.round((mH / pcmTotal) * 100) : 0 }
+            ];
+            return rows.map(s => `
+                <div class="theme-subtle p-3 rounded-xl space-y-1.5">
+                    <div class="flex justify-between text-xs font-extrabold">
+                        <span>${s.name}</span>
+                        <span>${s.hrs.toFixed(1)} Hrs (${s.pct}%) • ${Math.round(s.q)} Qs • ${Math.round(s.pyq)} PYQs</span>
+                    </div>
+                    <div class="w-full h-2.5 bg-white/70 rounded-full overflow-hidden">
+                        <div class="h-full transition-all duration-300" style="width: ${s.pct}%; background-color: var(--primary-dark);"></div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function render1DayView() {
+            const st = parseDayStats(currentDayData);
+            const dtLabel = document.getElementById('ddmmyyyyDisplay').textContent;
+            document.getElementById('daysTrackedBadge').textContent = `1 Day • ${dtLabel}`;
+            document.getElementById('anModeSubtitle').textContent = `Showing complete single-day report for selected date (${dtLabel})`;
+            document.getElementById('d1DateLabel').textContent = dtLabel;
+
+            const maxLecs = showBacklogLectures ? 5 : 3;
+            const lecPct = Math.min(100, Math.round((st.lDone / maxLecs) * 100));
+            const todoPct = st.todoTotal > 0 ? Math.round((st.todoDone / st.todoTotal) * 100) : 0;
+
+            document.getElementById('d1TotHours').textContent = st.totalH.toFixed(1);
+            document.getElementById('d1HoursSplit').textContent = `PCM: ${(st.pH + st.cH + st.mH).toFixed(1)}h • Self: ${st.sH.toFixed(1)}h`;
+            document.getElementById('d1TotQuestions').textContent = Math.round(st.totalQ);
+            document.getElementById('d1PyqSplit').textContent = `${Math.round(st.pracQ)} Practice • ${Math.round(st.pyqQ)} PYQs`;
+            document.getElementById('d1TotLectures').textContent = `${st.lDone} / ${maxLecs}`;
+            document.getElementById('d1LecStatus').textContent = `${lecPct}% Completed`;
+            document.getElementById('d1TodoDone').textContent = `${st.todoDone} / ${st.todoTotal}`;
+            document.getElementById('d1TodoPct').textContent = `${todoPct}% Action Rate`;
+
+            document.getElementById('d1SubjectBreakdown').innerHTML = renderSubjectBarsHTML(
+                st.pH, st.cH, st.mH, st.pQ, st.cQ, st.mQ, st.pP, st.cP, st.mP
+            );
+
+            const lecs = (currentDayData.lectures || []).slice(0, maxLecs);
+            document.getElementById('d1LectureTopicsList').innerHTML = lecs.map((l, i) => `
+                <div class="flex items-center justify-between px-3 py-1.5 rounded-lg theme-subtle">
+                    <span class="font-extrabold">${l.done ? '✅' : '⏳'} Lec #${i + 1} (${l.sub}): <span class="font-semibold">${l.topic || 'No topic written'}</span></span>
+                    <span class="text-[10px] font-black uppercase">${l.done ? 'Done' : 'Pending'}</span>
+                </div>
+            `).join('');
+
+            document.getElementById('d1WaterVal').textContent = `${(st.wG * 0.25).toFixed(2)} L`;
+            document.getElementById('d1SleepVal').textContent = `${st.slH} hrs`;
+            document.getElementById('d1ExVal').textContent = `${Math.round(st.exM)} mins`;
+
+            const vEl = document.getElementById('d1VerdictBox');
+            if (st.totalH >= 8 && st.totalQ >= 40 && st.lDone >= 3) {
+                vEl.textContent = '🔥 Champion Day! You hit 8+ study hours, 40+ questions, and finished your lectures.';
+            } else if (st.totalH > 0 || st.totalQ > 0 || st.lDone > 0) {
+                vEl.textContent = `⚡ Good progress today! Push to reach 8+ hours and 50+ Questions/PYQs before sleeping.`;
+            } else {
+                vEl.textContent = '📋 No study entries logged for this date yet. Go to Tab 1 to start logging your day!';
+            }
+        }
+
+        function render2WeekView() {
+            const endDt = parseYYYYMMDD(activeDateStr);
+            let activeDays = 0;
+            let pH = 0, cH = 0, mH = 0, sH = 0;
+            let pQ = 0, cQ = 0, mQ = 0, pP = 0, cP = 0, mP = 0;
+            let lDone = 0, wG = 0, slH = 0, slDays = 0, exM = 0, meals = 0, todoTot = 0, todoDn = 0;
+
+            const dayCardsHTML = [];
+            const shortWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+            for (let offset = 13; offset >= 0; offset--) {
+                const d = new Date(endDt);
+                d.setDate(d.getDate() - offset);
+                const dStr = getLocalYYYYMMDD(d);
+                const dd = String(d.getDate()).padStart(2, '0');
+                const mm = String(d.getMonth() + 1).padStart(2, '0');
+
+                let raw = localStorage.getItem(getDayStorageKey(dStr));
+                let parsed = null;
+                if (raw) {
+                    try { parsed = JSON.parse(raw); } catch (e) {}
+                }
+                const st = parseDayStats(parsed);
+                if (st.hasActivity) {
+                    activeDays++;
+                    pH += st.pH; cH += st.cH; mH += st.mH; sH += st.sH;
+                    pQ += st.pQ; cQ += st.cQ; mQ += st.mQ;
+                    pP += st.pP; cP += st.cP; mP += st.mP;
+                    lDone += st.lDone;
+                    wG += st.wG;
+                    if (st.slH > 0) { slH += st.slH; slDays++; }
+                    exM += st.exM;
+                    meals += st.meals;
+                    todoTot += st.todoTotal;
+                    todoDn += st.todoDone;
+                }
+
+                const isCurrent = dStr === activeDateStr;
+                dayCardsHTML.push(`
+                    <button type="button" onclick="loadDateRecord('${dStr}'); switchTab('today');"
+                            class="p-2.5 rounded-xl border text-left transition cursor-pointer flex flex-col justify-between ${
+                                st.hasActivity ? 'theme-subtle' : 'theme-card opacity-75'
+                            } ${isCurrent ? 'ring-2 ring-current' : ''}">
+                        <div class="flex items-center justify-between w-full">
+                            <span class="text-[10px] font-extrabold uppercase">${shortWeek[d.getDay()]} ${dd}/${mm}</span>
+                            <span class="text-[10px] font-black">${st.hasActivity ? '✅' : '—'}</span>
+                        </div>
+                        <div class="mt-1.5">
+                            <span class="text-xs font-black block">${st.totalH.toFixed(1)} hrs</span>
+                            <span class="text-[10px] font-bold opacity-80 block">${Math.round(st.totalQ)} Qs • ${st.lDone} Lec</span>
+                        </div>
+                    </button>
+                `);
+            }
+
+            const denom = Math.max(1, activeDays);
+            const totH = pH + cH + mH + sH;
+            const totPrac = pQ + cQ + mQ;
+            const totPyq = pP + cP + mP;
+
+            document.getElementById('daysTrackedBadge').textContent = `2 Weeks • ${activeDays} / 14 Days Active`;
+            document.getElementById('anModeSubtitle').textContent = `14-Day Sprint Analysis ending on ${document.getElementById('ddmmyyyyDisplay').textContent}`;
+
+            document.getElementById('w2TotHours').textContent = totH.toFixed(1);
+            document.getElementById('w2AvgHours').textContent = `Avg: ${(totH / denom).toFixed(1)} hrs/active day`;
+            document.getElementById('w2TotQuestions').textContent = Math.round(totPrac + totPyq);
+            document.getElementById('w2PyqSplit').textContent = `${Math.round(totPrac)} Practice • ${Math.round(totPyq)} PYQs`;
+            document.getElementById('w2TotLectures').textContent = lDone;
+            document.getElementById('w2AvgLecs').textContent = `Active Days: ${activeDays} / 14`;
+
+            const avgWaterL = ((wG / denom) * 0.25).toFixed(2);
+            const avgSleepH = slDays > 0 ? (slH / slDays).toFixed(1) : '0.0';
+            document.getElementById('w2AvgWater').textContent = `${avgWaterL} L`;
+            document.getElementById('w2AvgSleep').textContent = `Avg Sleep: ${avgSleepH} hrs`;
+
+            document.getElementById('w2DaysGrid').innerHTML = dayCardsHTML.join('');
+            document.getElementById('w2SubjectBreakdown').innerHTML = renderSubjectBarsHTML(pH, cH, mH, pQ, cQ, mQ, pP, cP, mP);
+
+            const todoPct = todoTot > 0 ? Math.round((todoDn / todoTot) * 100) : 0;
+            const mealPct = activeDays > 0 ? Math.min(100, Math.round((meals / (activeDays * 4)) * 100)) : 0;
+            document.getElementById('w2TodoRate').textContent = `${todoPct}%`;
+            document.getElementById('w2TodoCount').textContent = `${todoDn} / ${todoTot} tasks`;
+            document.getElementById('w2ExTotal').textContent = `${Math.round(exM)} mins`;
+            document.getElementById('w2MealRate').textContent = `Meals logged: ${mealPct}%`;
+
+            const insightEl = document.getElementById('w2InsightBox');
+            insightEl.textContent = activeDays >= 10
+                ? `🔥 Strong 2-Week Consistency! You stayed active ${activeDays}/14 days with ${totH.toFixed(1)} hours & ${Math.round(totPrac + totPyq)} questions solved.`
+                : `💡 2-Week Tip: Try to log your study hours and PYQs every single day for the next 14 days to build an unbroken streak!`;
+        }
+
+        function render100DayView() {
+            let daysCount = 0;
+            let totPhyH = 0, totChemH = 0, totMathH = 0, totSelfH = 0;
+            let totPhyQ = 0, totChemQ = 0, totMathQ = 0;
+            let totPhyP = 0, totChemP = 0, totMathP = 0;
+            let totLecs = 0;
+            let totWaterGlasses = 0, totSleepH = 0, sleepDays = 0, totExM = 0;
+            let mealSlotsLogged = 0;
+            let todoTotal = 0, todoDone = 0;
+
+            for (let i = 0; i < localStorage.length; i++) {
+                const k = localStorage.key(i);
+                if (k && k.startsWith('mission100_day_')) {
+                    try {
+                        const d = JSON.parse(localStorage.getItem(k));
+                        const st = parseDayStats(d);
+                        if (st.hasActivity) {
+                            daysCount++;
+                            totPhyH += st.pH; totChemH += st.cH; totMathH += st.mH; totSelfH += st.sH;
+                            totPhyQ += st.pQ; totChemQ += st.cQ; totMathQ += st.mQ;
+                            totPhyP += st.pP; totChemP += st.cP; totMathP += st.mP;
+                            totLecs += st.lDone;
+                            totWaterGlasses += st.wG;
+                            if (st.slH > 0) { totSleepH += st.slH; sleepDays++; }
+                            totExM += st.exM;
+                            mealSlotsLogged += st.meals;
+                            todoTotal += st.todoTotal;
+                            todoDone += st.todoDone;
+                        }
+                    } catch (e) {}
+                }
+            }
+
+            const denom = Math.max(1, daysCount);
+            const grandHours = totPhyH + totChemH + totMathH + totSelfH;
+            const grandPracQ = totPhyQ + totChemQ + totMathQ;
+            const grandPyq = totPhyP + totChemP + totMathP;
+            const grandTotalQ = grandPracQ + grandPyq;
+
+            document.getElementById('daysTrackedBadge').textContent = `100-Day Mission • ${daysCount} / 100 Days`;
+            document.getElementById('anModeSubtitle').textContent = `Complete 100-Day Mission Progress across all tracked days, syllabus & mock tests`;
+
+            const dayPct100 = Math.min(100, Math.round((daysCount / 100) * 100));
+            const hrsPct800 = Math.min(100, Math.round((grandHours / 800) * 100));
+            const qsPct5000 = Math.min(100, Math.round((grandTotalQ / 5000) * 100));
+
+            document.getElementById('p100DaysMilestoneBadge').textContent = `${daysCount} / 100 Days Active`;
+            document.getElementById('p100DayBarLabel').textContent = `${dayPct100}% (${daysCount}/100d)`;
+            document.getElementById('p100DayBar').style.width = `${dayPct100}%`;
+
+            document.getElementById('p100HrsBarLabel').textContent = `${hrsPct800}% (${grandHours.toFixed(0)}/800h)`;
+            document.getElementById('p100HrsBar').style.width = `${hrsPct800}%`;
+
+            document.getElementById('p100QsBarLabel').textContent = `${qsPct5000}% (${Math.round(grandTotalQ)}/5000)`;
+            document.getElementById('p100QsBar').style.width = `${qsPct5000}%`;
+
+            document.getElementById('anTotHours').textContent = grandHours.toFixed(1);
+            document.getElementById('anAvgHours').textContent = `Avg: ${(grandHours / denom).toFixed(1)} hrs/day`;
+
+            document.getElementById('anTotQuestions').textContent = Math.round(grandTotalQ);
+            document.getElementById('anPyqSplit').textContent = `${Math.round(grandPracQ)} Practice • ${Math.round(grandPyq)} PYQs`;
+
+            document.getElementById('anTotLectures').textContent = totLecs;
+            document.getElementById('anLecRate').textContent = `Avg: ${(totLecs / denom).toFixed(1)} lecs/day`;
+
+            document.getElementById('anSubjectBreakdown').innerHTML = renderSubjectBarsHTML(
+                totPhyH, totChemH, totMathH, totPhyQ, totChemQ, totMathQ, totPhyP, totChemP, totMathP
+            );
+
+            const mocks = getMockTests();
+            if (mocks.length > 0) {
+                const avgTot = Math.round(mocks.reduce((a, b) => a + b.total, 0) / mocks.length);
+                const bestTot = Math.max(...mocks.map(m => m.total));
+                const avgP = Math.round(mocks.reduce((a, b) => a + b.phy, 0) / mocks.length);
+                const avgC = Math.round(mocks.reduce((a, b) => a + b.chem, 0) / mocks.length);
+                const avgM = Math.round(mocks.reduce((a, b) => a + b.math, 0) / mocks.length);
+
+                document.getElementById('anMockAvg').textContent = avgTot;
+                document.getElementById('anMockBest').textContent = `Highest: ${bestTot} / 300`;
+                document.getElementById('anMockPhyAvg').textContent = avgP;
+                document.getElementById('anMockChemAvg').textContent = avgC;
+                document.getElementById('anMockMathAvg').textContent = avgM;
+
+                const weakTags = [];
+                const strongTags = [];
+                mocks.forEach(m => {
+                    if (m.weak) m.weak.split(',').forEach(w => { if (w.trim()) weakTags.push(w.trim()); });
+                    if (m.strong) m.strong.split(',').forEach(s => { if (s.trim()) strongTags.push(s.trim()); });
+                });
+
+                document.getElementById('anWeakChaptersBox').innerHTML = weakTags.length
+                    ? weakTags.map(t => `<span class="text-xs font-bold px-2.5 py-1 rounded-lg theme-subtle">${t}</span>`).join('')
+                    : `<span class="text-xs theme-text-muted">No weak chapters logged yet.</span>`;
+
+                document.getElementById('anStrongChaptersBox').innerHTML = strongTags.length
+                    ? strongTags.map(t => `<span class="text-xs font-bold px-2.5 py-1 rounded-lg theme-subtle">${t}</span>`).join('')
+                    : `<span class="text-xs theme-text-muted">No strong chapters logged yet.</span>`;
+            } else {
+                document.getElementById('anMockAvg').textContent = '0';
+                document.getElementById('anMockBest').textContent = 'No mocks logged yet';
+                document.getElementById('anMockPhyAvg').textContent = '0';
+                document.getElementById('anMockChemAvg').textContent = '0';
+                document.getElementById('anMockMathAvg').textContent = '0';
+                document.getElementById('anWeakChaptersBox').innerHTML = `<span class="text-xs theme-text-muted">Log a test in Tab 3 to see weak chapters.</span>`;
+                document.getElementById('anStrongChaptersBox').innerHTML = `<span class="text-xs theme-text-muted">Log a test in Tab 3 to see strong chapters.</span>`;
+            }
+
+            const avgGlasses = totWaterGlasses / denom;
+            const avgWaterL = (avgGlasses * 0.25).toFixed(2);
+            const avgSleep = sleepDays > 0 ? (totSleepH / sleepDays).toFixed(1) : '0.0';
+            const mealPct = daysCount > 0 ? Math.min(100, Math.round((mealSlotsLogged / (daysCount * 4)) * 100)) : 0;
+
+            document.getElementById('anAvgWater').textContent = `${avgWaterL} L`;
+            document.getElementById('anAvgGlasses').textContent = `${avgGlasses.toFixed(1)} glasses/day`;
+            document.getElementById('anAvgSleep').textContent = `${avgSleep} hrs`;
+            document.getElementById('anTotExMins').textContent = `${Math.round(totExM)} mins`;
+            document.getElementById('anAvgExMins').textContent = `${Math.round(totExM / denom)}m / day`;
+            document.getElementById('anMealConsistency').textContent = `${mealPct}%`;
+
+            const verdictEl = document.getElementById('anHealthVerdict');
+            if (avgGlasses >= 8 && parseFloat(avgSleep) >= 6.5) {
+                verdictEl.textContent = '✅ Great Bio-Rhythm! Your hydration and sleep schedule strongly support high memory retention.';
+            } else {
+                verdictEl.textContent = '💡 Tip: Aim for at least 8–10 glasses (2.5L) of water and 7 hours of fixed-time sleep daily for peak JEE focus.';
+            }
+
+            const sylStats = computeSyllabusPercentages();
+            document.getElementById('anSylOverall').textContent = `${sylStats.overall}%`;
+            document.getElementById('anSylBar').style.width = `${sylStats.overall}%`;
+
+            const todoPct = todoTotal > 0 ? Math.round((todoDone / todoTotal) * 100) : 0;
+            document.getElementById('anTodoRate').textContent = `${todoPct}% (${todoDone}/${todoTotal})`;
+            document.getElementById('anTodoBar').style.width = `${todoPct}%`;
+        }
+
+        function render360Analysis() {
+            if (activeAnalysisMode === '1day') {
+                render1DayView();
+            } else if (activeAnalysisMode === '2week') {
+                render2WeekView();
+            } else {
+                render100DayView();
+            }
+        }
+
+        function switchTab(tabName) {
+            ['today', 'syllabus', 'mocks', 'analytics'].forEach(t => {
+                const content = document.getElementById(`tabContent-${t}`);
+                const btn = document.getElementById(`tabBtn-${t}`);
+                if (content) content.classList.toggle('hidden', t !== tabName);
+                if (btn) btn.classList.toggle('tab-btn-active', t === tabName);
+            });
+
+            if (tabName === 'syllabus') renderSyllabusChapters();
+            if (tabName === 'mocks') renderMockHistory();
+            if (tabName === 'analytics') render360Analysis();
+        }
+
+        /* ================= NOTIFICATIONS (Red, Yellow, Green) ================= */
+        const DEFAULT_MANUAL_NOTICES = [
+            { id: 1, type: 'yellow', tag: 'Exam Date', text: 'JEE Main 2027 Session 1 Exam Target Date: 22 January 2027. Stay focused!' },
+            { id: 2, type: 'yellow', tag: 'Official Info', text: 'Official bulletin & registration updates will be released on jeemain.nta.nic.in in Nov.' },
+            { id: 3, type: 'yellow', tag: 'PYQ Alert', text: 'Solve last 5 years shift-wise PYQs on ExamSIDE after finishing each chapter.' }
+        ];
+
+        function getManualNotices() {
+            try {
+                const raw = localStorage.getItem('mission100_notifications_manual');
+                return raw ? JSON.parse(raw) : DEFAULT_MANUAL_NOTICES;
+            } catch (e) {
+                return DEFAULT_MANUAL_NOTICES;
+            }
+        }
+
+        function renderNotifications() {
+            const container = document.getElementById('ntaMessagesList');
+            if (!container) return;
+            const items = [];
+
+            // 1. DYNAMIC RED ALERTS
+            const st = parseDayStats(currentDayData);
+            if (st.totalH < 6 && st.hasActivity) {
+                items.push({
+                    type: 'red',
+                    tag: 'Low Study Time',
+                    text: `Today's study time is only ${st.totalH.toFixed(1)} hrs. Target at least 7-8+ hours of PCM + Self Study!`
+                });
+            }
+            if (st.wG < 6) {
+                items.push({
+                    type: 'red',
+                    tag: 'Low Hydration',
+                    text: `Only ${st.wG}/12 glasses of water logged today (${(st.wG * 0.25).toFixed(2)}L). Drink water for better focus!`
+                });
+            }
+            if (st.slH > 0 && st.slH < 6) {
+                items.push({
+                    type: 'red',
+                    tag: 'Sleep Deficit',
+                    text: `You only slept ${st.slH} hours. Minimum 6.5 to 7 hours of sleep is necessary for memory retention.`
+                });
+            }
+
+            const mocks = getMockTests();
+            if (mocks.length > 0 && mocks[0].weak) {
+                items.push({
+                    type: 'red',
+                    tag: 'Weak Chapter Alert',
+                    text: `Recent Mock Weak Chapters: ${mocks[0].weak}. Schedule revisions for these topics!`
+                });
+            }
+
+            // 2. DYNAMIC GREEN ACHIEVEMENTS
+            const completedTodos = (currentDayData.todos || []).filter(t => t.done);
+            completedTodos.forEach(t => {
+                items.push({
+                    type: 'green',
+                    tag: 'Task Completed',
+                    text: `Completed: "${t.text}"`
+                });
+            });
+
+            if (st.lDone >= 3) {
+                items.push({
+                    type: 'green',
+                    tag: 'Lectures Done',
+                    text: `All regular Mission 100 JEE lectures (${st.lDone} done) completed for today!`
+                });
+            }
+
+            const sylStats = computeSyllabusPercentages();
+            if (sylStats.overall >= 20) {
+                items.push({
+                    type: 'green',
+                    tag: 'Syllabus Milestone',
+                    text: `Awesome! You have finished ${sylStats.overall}% of overall JEE PCM Syllabus.`
+                });
+            }
+
+            // 3. YELLOW MANUAL & OFFICIAL NOTICES
+            const manualList = getManualNotices();
+            manualList.forEach(m => {
+                items.push({
+                    id: m.id,
+                    type: m.type || 'yellow',
+                    tag: m.tag || 'Notice',
+                    text: m.text,
+                    isManual: true
+                });
+            });
+
+            const badge = document.getElementById('ntaUnreadBadge');
+            if (badge) badge.textContent = items.length;
+
+            container.innerHTML = items.map(m => {
+                let cardStyle = '';
+                let badgeStyle = '';
+                if (m.type === 'red') {
+                    cardStyle = 'background-color: #fef2f2; border: 1px solid #fecaca; color: #991b1b;';
+                    badgeStyle = 'background-color: #dc2626; color: #ffffff;';
+                } else if (m.type === 'green') {
+                    cardStyle = 'background-color: #f0fdf4; border: 1px solid #bbf7d0; color: #166534;';
+                    badgeStyle = 'background-color: #16a34a; color: #ffffff;';
+                } else {
+                    cardStyle = 'background-color: #fefce8; border: 1px solid #fef08a; color: #854d0e;';
+                    badgeStyle = 'background-color: #ca8a04; color: #ffffff;';
+                }
+
+                return `
+                    <div class="p-3 rounded-xl space-y-1 transition" style="${cardStyle}">
+                        <div class="flex justify-between items-center">
+                            <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded shadow-xs" style="${badgeStyle}">
+                                ${m.tag}
+                            </span>
+                            ${m.isManual ? `<button type="button" onclick="deleteNotificationMessage(${m.id})" class="text-xs font-black px-1.5 hover:opacity-70 cursor-pointer">✕</button>` : ''}
+                        </div>
+                        <p class="text-xs font-bold leading-relaxed pt-1">${m.text}</p>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function addNtaMessage() {
+            const inp = document.getElementById('newNtaMsgInput');
+            if (!inp || !inp.value.trim()) return;
+            const list = getManualNotices();
+            list.unshift({
+                id: Date.now(),
+                type: 'yellow',
+                tag: 'Custom Note',
+                text: inp.value.trim()
+            });
+            localStorage.setItem('mission100_notifications_manual', JSON.stringify(list));
+            inp.value = '';
+            renderNotifications();
+        }
+
+        function deleteNotificationMessage(id) {
+            const list = getManualNotices().filter(m => m.id !== id);
+            localStorage.setItem('mission100_notifications_manual', JSON.stringify(list));
+            renderNotifications();
+        }
+
+        function toggleNtaDrawer(open) {
+            const backdrop = document.getElementById('ntaDrawerBackdrop');
+            const panel = document.getElementById('ntaDrawerPanel');
+            if (open) {
+                renderNotifications();
+                backdrop.classList.remove('hidden');
+                panel.classList.remove('translate-x-full');
+            } else {
+                backdrop.classList.add('hidden');
+                panel.classList.add('translate-x-full');
+            }
+        }
+
+        /* ================= ABOUT MODAL & JSON BACKUP ================= */
+        function openAboutModal() {
+            const modal = document.getElementById('aboutModal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
+        }
+
+        function closeAboutModal() {
+            const modal = document.getElementById('aboutModal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        }
+
+        function downloadUserDataJson() {
+            const dump = {
+                metadata: {
+                    appName: "Mission 100 JEE Command Center",
+                    version: "3.2.0",
+                    developer: "subhajit maity",
+                    design: "gemini pro and argon 4",
+                    exportedAt: new Date().toISOString()
+                },
+                localStorage: {}
+            };
+
+            for (let i = 0; i < localStorage.length; i++) {
+                const k = localStorage.key(i);
+                if (k && (k.startsWith('mission100_'))) {
+                    try {
+                        dump.localStorage[k] = JSON.parse(localStorage.getItem(k));
+                    } catch (e) {
+                        dump.localStorage[k] = localStorage.getItem(k);
+                    }
+                }
+            }
+
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(dump, null, 2));
+            const dlAnchor = document.createElement('a');
+            dlAnchor.setAttribute("href", dataStr);
+            dlAnchor.setAttribute("download", `mission100_backup_${getLocalYYYYMMDD()}.json`);
+            document.body.appendChild(dlAnchor);
+            dlAnchor.click();
+            dlAnchor.remove();
+        }
+
+        function uploadUserDataJson(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const parsed = JSON.parse(e.target.result);
+                    if (parsed && parsed.localStorage) {
+                        Object.keys(parsed.localStorage).forEach(key => {
+                            const val = parsed.localStorage[key];
+                            localStorage.setItem(key, typeof val === 'object' ? JSON.stringify(val) : val);
+                        });
+                        alert('✅ Backup data successfully restored!');
+                        location.reload();
+                    } else {
+                        alert('⚠️ Invalid backup format (.json).');
+                    }
+                } catch (err) {
+                    alert('⚠️ Error reading backup JSON file.');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        /* ================= RESET DAY MODAL ================= */
+        function openResetDayModal() {
+            document.getElementById('resetModalDateLabel').textContent = document.getElementById('ddmmyyyyDisplay').textContent;
+            const modal = document.getElementById('resetDayModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeResetDayModal() {
+            const modal = document.getElementById('resetDayModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function confirmResetDay() {
+            currentDayData = defaultDayState();
+            saveCurrentDayRecord();
+            renderDayTrackerUI();
+            closeResetDayModal();
+        }
+
+        function migrateCleanStorageKeys() {
+            const keysToMigrate = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const k = localStorage.key(i);
+                if (k && k.includes('_v3')) keysToMigrate.push(k);
+            }
+            keysToMigrate.forEach(oldKey => {
+                const newKey = oldKey.replace('_v3', '');
+                if (!localStorage.getItem(newKey)) {
+                    localStorage.setItem(newKey, localStorage.getItem(oldKey));
+                }
+                localStorage.removeItem(oldKey);
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            migrateCleanStorageKeys();
+            const savedTheme = localStorage.getItem('mission100_theme') || 'teal';
+            applyTheme(savedTheme);
+            updateLiveCountdown();
+            loadDateRecord(getLocalYYYYMMDD(new Date()));
+            updateMockPlaceholders();
+            renderNotifications();
+            updateSyllabusProgressBars();
+            document.getElementById('mockDate').value = activeDateStr;
+        });
+    </script>
+</body>
+</html>
