@@ -483,8 +483,7 @@
                         <!-- Task List Container -->
                         <ul id="todoListUl" class="space-y-2 max-h-64 overflow-y-auto pr-1"></ul>
                     </div>
-
-                    <div class="mt-4 pt-2.5 border-t theme-border flex justify-between items-center text-xs">
+                     <div class="mt-4 pt-2.5 border-t theme-border flex justify-between items-center text-xs">
                         <span class="theme-text-muted font-medium">Small daily targets build AIR ranks.</span>
                         <button type="button" onclick="clearCompletedTodos()" class="font-extrabold underline cursor-pointer">Clear Completed</button>
                     </div>
@@ -719,7 +718,6 @@
                         <input type="text" id="mockWeak" placeholder="e.g. Rotational Motion, Ionic Equilibrium, Calculus" class="theme-input w-full text-xs sm:text-sm px-3 py-2 rounded-xl">
                     </div>
                 </div>
-
                 <button type="button" onclick="saveMockTest()" class="theme-btn-dark font-extrabold text-xs sm:text-sm px-5 py-2.5 rounded-xl cursor-pointer">
                     + Save Mock Test Result
                 </button>
@@ -733,138 +731,336 @@
         </div>
 
         <!-- ===================================================================== -->
-        <!-- TAB 4: 360° COMPLETE ANALYSIS (ALL-IN-ONE ANALYTICS)                   -->
+        <!-- TAB 4: 360° COMPLETE ANALYSIS (1 DAY | 2 WEEK | 100 DAY PROGRESS)     -->
         <!-- ===================================================================== -->
-        <div id="tabContent-analytics" class="hidden space-y-6">
+        <div id="tabContent-analytics" class="hidden space-y-5">
             
-            <!-- Top Banner -->
-            <div class="theme-card rounded-2xl p-4 sm:p-5 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div>
-                    <h2 class="text-base sm:text-lg font-black uppercase">📊 360° Complete Preparation Analysis</h2>
-                    <p class="text-xs theme-text-muted">Live aggregated insights across all your active tracked days, syllabus, mock tests & health logs</p>
-                </div>
-                <span id="daysTrackedBadge" class="text-xs font-black px-3 py-1.5 rounded-xl theme-btn-dark self-start sm:self-auto">0 Active Days Tracked</span>
-            </div>
-
-            <!-- 1. Overall KPI Cards -->
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5">
-                <div class="theme-card p-4 rounded-2xl">
-                    <span class="text-[10px] font-extrabold uppercase theme-text-muted">Total Study Hours</span>
-                    <p class="text-2xl sm:text-3xl font-black mt-1"><span id="anTotHours">0.0</span> <small class="text-xs">hrs</small></p>
-                    <span id="anAvgHours" class="text-[11px] font-bold theme-text-muted block mt-1">Avg: 0.0 hrs/day</span>
+            <!-- Top Banner & 3 Mode Selector Buttons -->
+            <div class="theme-card rounded-2xl p-4 sm:p-5 shadow-sm space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                        <h2 class="text-base sm:text-lg font-black uppercase">📊 360° Preparation Analysis</h2>
+                        <p id="anModeSubtitle" class="text-xs theme-text-muted">Check your 1 Day, 2 Week (14 Days) & 100 Day Progress in one place</p>
+                    </div>
+                    <span id="daysTrackedBadge" class="text-xs font-black px-3 py-1.5 rounded-xl theme-btn-dark self-start sm:self-auto">Today's Snapshot</span>
                 </div>
 
-                <div class="theme-card p-4 rounded-2xl">
-                    <span class="text-[10px] font-extrabold uppercase theme-text-muted">Total Questions + PYQs</span>
-                    <p class="text-2xl sm:text-3xl font-black mt-1" id="anTotQuestions">0</p>
-                    <span id="anPyqSplit" class="text-[11px] font-bold theme-text-muted block mt-1">0 Practice • 0 PYQs</span>
-                </div>
-
-                <div class="theme-card p-4 rounded-2xl">
-                    <span class="text-[10px] font-extrabold uppercase theme-text-muted">Lectures Completed</span>
-                    <p class="text-2xl sm:text-3xl font-black mt-1" id="anTotLectures">0</p>
-                    <span id="anLecRate" class="text-[11px] font-bold theme-text-muted block mt-1">Avg: 0.0 lecs/day</span>
-                </div>
-
-                <div class="theme-card p-4 rounded-2xl">
-                    <span class="text-[10px] font-extrabold uppercase theme-text-muted">Mock Test Average</span>
-                    <p class="text-2xl sm:text-3xl font-black mt-1"><span id="anMockAvg">0</span> <small class="text-xs">/ 300</small></p>
-                    <span id="anMockBest" class="text-[11px] font-bold theme-text-muted block mt-1">Highest: 0 / 300</span>
+                <!-- 3 Option Switcher: 1 Day | 2 Week | 100 Day Progress -->
+                <div class="grid grid-cols-3 gap-2 pt-3 border-t theme-border">
+                    <button type="button" id="anBtn-1day" onclick="switchAnalysisMode('1day')"
+                            class="tab-btn-active py-2.5 px-3 rounded-xl font-extrabold text-xs sm:text-sm border theme-subtle flex items-center justify-center gap-1.5 transition cursor-pointer">
+                        <span>📅</span>
+                        <span>1 Day</span>
+                    </button>
+                    <button type="button" id="anBtn-2week" onclick="switchAnalysisMode('2week')"
+                            class="py-2.5 px-3 rounded-xl font-extrabold text-xs sm:text-sm border theme-subtle flex items-center justify-center gap-1.5 transition cursor-pointer">
+                        <span>📆</span>
+                        <span>2 Week</span>
+                    </button>
+                    <button type="button" id="anBtn-100day" onclick="switchAnalysisMode('100day')"
+                            class="py-2.5 px-3 rounded-xl font-extrabold text-xs sm:text-sm border theme-subtle flex items-center justify-center gap-1.5 transition cursor-pointer">
+                        <span>🚀</span>
+                        <span>100 Day Progress</span>
+                    </button>
                 </div>
             </div>
 
-            <!-- 2. Subject-Wise Study & PYQ Balance + Weak/Strong Chapter Analysis -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- ================= VIEW 1: 1 DAY ANALYSIS ================= -->
+            <div id="anView-1day" class="space-y-5">
+                <!-- 1 Day KPI Row -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5">
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">Study Hours (1 Day)</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1"><span id="d1TotHours">0.0</span> <small class="text-xs">hrs</small></p>
+                        <span id="d1HoursSplit" class="text-[11px] font-bold theme-text-muted block mt-1">PCM: 0.0h • Self: 0.0h</span>
+                    </div>
+
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">Questions + PYQs</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1" id="d1TotQuestions">0</p>
+                        <span id="d1PyqSplit" class="text-[11px] font-bold theme-text-muted block mt-1">0 Practice • 0 PYQs</span>
+                    </div>
+
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">Lectures Done</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1" id="d1TotLectures">0 / 3</p>
+                        <span id="d1LecStatus" class="text-[11px] font-bold theme-text-muted block mt-1">0% Completed</span>
+                    </div>
+
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">To-Do Tasks Done</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1" id="d1TodoDone">0 / 0</p>
+                        <span id="d1TodoPct" class="text-[11px] font-bold theme-text-muted block mt-1">0% Action Rate</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                    <!-- 1 Day Subject Breakdown -->
+                    <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-3.5">
+                        <div class="flex items-center justify-between pb-2 border-b theme-border">
+                            <h3 class="text-sm font-black uppercase">📚 1 Day Subject-Wise Output</h3>
+                            <span id="d1DateLabel" class="text-xs font-extrabold theme-badge px-2.5 py-0.5 rounded-lg">Today</span>
+                        </div>
+                        <div id="d1SubjectBreakdown" class="space-y-3"></div>
+                    </div>
+
+                    <!-- 1 Day Lectures & Bio-Fuel Check -->
+                    <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-4">
+                        <h3 class="text-sm font-black uppercase pb-2 border-b theme-border">🎓 Lectures & Bio-Fuel Summary (1 Day)</h3>
+                        <div id="d1LectureTopicsList" class="space-y-1.5 text-xs"></div>
+
+                        <div class="grid grid-cols-3 gap-2 text-center pt-2 border-t theme-border">
+                            <div class="theme-subtle p-2.5 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">💧 Water</span>
+                                <span id="d1WaterVal" class="text-base font-black">0.0 L</span>
+                            </div>
+                            <div class="theme-subtle p-2.5 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">😴 Sleep</span>
+                                <span id="d1SleepVal" class="text-base font-black">0 hrs</span>
+                            </div>
+                            <div class="theme-subtle p-2.5 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">🏃 Exercise</span>
+                                <span id="d1ExVal" class="text-base font-black">0 mins</span>
+                            </div>
+                        </div>
+
+                        <div id="d1VerdictBox" class="theme-subtle p-3 rounded-xl text-xs font-bold"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= VIEW 2: 2 WEEK (14 DAYS) ANALYSIS ================= -->
+            <div id="anView-2week" class="hidden space-y-5">
+                <!-- 2 Week KPI Row -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5">
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">2-Week Study Hours</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1"><span id="w2TotHours">0.0</span> <small class="text-xs">hrs</small></p>
+                        <span id="w2AvgHours" class="text-[11px] font-bold theme-text-muted block mt-1">Avg: 0.0 hrs/day</span>
+                    </div>
+
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">2-Week Questions + PYQs</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1" id="w2TotQuestions">0</p>
+                        <span id="w2PyqSplit" class="text-[11px] font-bold theme-text-muted block mt-1">0 Practice • 0 PYQs</span>
+                    </div>
+
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">2-Week Lectures Done</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1" id="w2TotLectures">0</p>
+                        <span id="w2AvgLecs" class="text-[11px] font-bold theme-text-muted block mt-1">Active Days: 0 / 14</span>
+                    </div>
+
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">2-Week Water & Sleep</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1" id="w2AvgWater">0.0 L</p>
+                        <span id="w2AvgSleep" class="text-[11px] font-bold theme-text-muted block mt-1">Avg Sleep: 0.0 hrs</span>
+                    </div>
+                </div>
+
+                <!-- 14-Day Daily Consistency Grid -->
+                <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-3">
+                    <div class="flex flex-wrap items-center justify-between gap-2 pb-2 border-b theme-border">
+                        <div>
+                            <h3 class="text-sm font-black uppercase">📆 Last 14 Days Consistency Log (2 Weeks)</h3>
+                            <p class="text-xs theme-text-muted">Click any day card below to jump to that date's tracker</p>
+                        </div>
+                        <span id="w2RangeBadge" class="text-xs font-extrabold theme-badge px-2.5 py-1 rounded-lg">Last 14 Days</span>
+                    </div>
+                    <div id="w2DaysGrid" class="grid grid-cols-2 sm:grid-cols-7 gap-2"></div>
+                </div>
+
+                <!-- 2 Week Subject Breakdown & To-Do Summary -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                    <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-3.5">
+                        <h3 class="text-sm font-black uppercase pb-2 border-b theme-border">📚 2-Week Subject Study & PYQ Balance</h3>
+                        <div id="w2SubjectBreakdown" class="space-y-3"></div>
+                    </div>
+
+                    <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-4">
+                        <h3 class="text-sm font-black uppercase pb-2 border-b theme-border">⚡ 2-Week Execution & Routine Summary</h3>
+                        <div class="grid grid-cols-2 gap-3 text-center">
+                            <div class="theme-subtle p-3 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">To-Do Completion</span>
+                                <span id="w2TodoRate" class="text-xl font-black">0%</span>
+                                <span id="w2TodoCount" class="text-[11px] block opacity-80">0 / 0 tasks</span>
+                            </div>
+                            <div class="theme-subtle p-3 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">Total Exercise</span>
+                                <span id="w2ExTotal" class="text-xl font-black">0 mins</span>
+                                <span id="w2MealRate" class="text-[11px] block opacity-80">Meals logged: 0%</span>
+                            </div>
+                        </div>
+                        <div id="w2InsightBox" class="theme-subtle p-3.5 rounded-xl text-xs font-bold leading-relaxed"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= VIEW 3: 100 DAY PROGRESS ANALYSIS ================= -->
+            <div id="anView-100day" class="hidden space-y-5">
                 
-                <!-- Subject-Wise Breakdown (Hours, Practice Qs, PYQs) -->
-                <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-4">
-                    <h3 class="text-sm font-black uppercase pb-2 border-b theme-border">📚 Subject-Wise Study & Question Analysis</h3>
-                    <div id="anSubjectBreakdown" class="space-y-3.5"></div>
+                <!-- 100-Day Mission Master Progress Bar Card -->
+                <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-3">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <div>
+                            <h3 class="text-sm sm:text-base font-black uppercase">🚀 Mission 100 Days Overall Journey Progress</h3>
+                            <p class="text-xs theme-text-muted">Tracks your 100-day consistency, study hours target (800+ hrs) & question milestone (5000+ Qs)</p>
+                        </div>
+                        <span id="p100DaysMilestoneBadge" class="text-xs sm:text-sm font-black px-3 py-1 rounded-xl theme-btn-dark">0 / 100 Days Active</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+                        <div class="theme-subtle p-3 rounded-xl space-y-1.5">
+                            <div class="flex justify-between text-xs font-extrabold">
+                                <span>Active Days (Target: 100d)</span>
+                                <span id="p100DayBarLabel">0%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-white/70 rounded-full overflow-hidden">
+                                <div id="p100DayBar" class="h-full transition-all duration-300" style="width: 0%; background-color: var(--primary-dark);"></div>
+                            </div>
+                        </div>
+
+                        <div class="theme-subtle p-3 rounded-xl space-y-1.5">
+                            <div class="flex justify-between text-xs font-extrabold">
+                                <span>Study Hours (Target: 800h)</span>
+                                <span id="p100HrsBarLabel">0%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-white/70 rounded-full overflow-hidden">
+                                <div id="p100HrsBar" class="h-full transition-all duration-300" style="width: 0%; background-color: var(--primary-dark);"></div>
+                            </div>
+                        </div>
+
+                        <div class="theme-subtle p-3 rounded-xl space-y-1.5">
+                            <div class="flex justify-between text-xs font-extrabold">
+                                <span>Total Qs + PYQs (Target: 5000)</span>
+                                <span id="p100QsBarLabel">0%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-white/70 rounded-full overflow-hidden">
+                                <div id="p100QsBar" class="h-full transition-all duration-300" style="width: 0%; background-color: var(--primary-dark);"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Weak & Strong Chapter Radar from Mock Tests -->
-                <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-4">
-                    <h3 class="text-sm font-black uppercase pb-2 border-b theme-border">🎯 Chapter Strength & Weakness Analysis (From Mocks)</h3>
+                <!-- 1. Overall KPI Cards -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5">
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">Total Study Hours</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1"><span id="anTotHours">0.0</span> <small class="text-xs">hrs</small></p>
+                        <span id="anAvgHours" class="text-[11px] font-bold theme-text-muted block mt-1">Avg: 0.0 hrs/day</span>
+                    </div>
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">Total Questions + PYQs</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1" id="anTotQuestions">0</p>
+                        <span id="anPyqSplit" class="text-[11px] font-bold theme-text-muted block mt-1">0 Practice • 0 PYQs</span>
+                    </div>
+
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">Lectures Completed</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1" id="anTotLectures">0</p>
+                        <span id="anLecRate" class="text-[11px] font-bold theme-text-muted block mt-1">Avg: 0.0 lecs/day</span>
+                    </div>
+
+                    <div class="theme-card p-4 rounded-2xl">
+                        <span class="text-[10px] font-extrabold uppercase theme-text-muted">Mock Test Average</span>
+                        <p class="text-2xl sm:text-3xl font-black mt-1"><span id="anMockAvg">0</span> <small class="text-xs">/ 300</small></p>
+                        <span id="anMockBest" class="text-[11px] font-bold theme-text-muted block mt-1">Highest: 0 / 300</span>
+                    </div>
+                </div>
+
+                <!-- 2. Subject-Wise Study & PYQ Balance + Weak/Strong Chapter Analysis -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     
-                    <div class="grid grid-cols-3 gap-2 text-center">
-                        <div class="theme-subtle p-2.5 rounded-xl">
-                            <span class="text-[10px] font-extrabold uppercase block">Physics Avg</span>
-                            <span id="anMockPhyAvg" class="text-lg font-black">0</span>
+                    <!-- Subject-Wise Breakdown (Hours, Practice Qs, PYQs) -->
+                    <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-4">
+                        <h3 class="text-sm font-black uppercase pb-2 border-b theme-border">📚 100-Day Subject Study & Question Analysis</h3>
+                        <div id="anSubjectBreakdown" class="space-y-3.5"></div>
+                    </div>
+
+                    <!-- Weak & Strong Chapter Radar from Mock Tests -->
+                    <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-4">
+                        <h3 class="text-sm font-black uppercase pb-2 border-b theme-border">🎯 Chapter Strength & Weakness Analysis (From Mocks)</h3>
+                        
+                        <div class="grid grid-cols-3 gap-2 text-center">
+                            <div class="theme-subtle p-2.5 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">Physics Avg</span>
+                                <span id="anMockPhyAvg" class="text-lg font-black">0</span>
+                            </div>
+                            <div class="theme-subtle p-2.5 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">Chemistry Avg</span>
+                                <span id="anMockChemAvg" class="text-lg font-black">0</span>
+                            </div>
+                            <div class="theme-subtle p-2.5 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">Math Avg</span>
+                                <span id="anMockMathAvg" class="text-lg font-black">0</span>
+                            </div>
                         </div>
-                        <div class="theme-subtle p-2.5 rounded-xl">
-                            <span class="text-[10px] font-extrabold uppercase block">Chemistry Avg</span>
-                            <span id="anMockChemAvg" class="text-lg font-black">0</span>
+
+                        <div>
+                            <span class="text-xs font-extrabold uppercase block mb-1.5">⚠️ Weak Chapters (Focus More Here):</span>
+                            <div id="anWeakChaptersBox" class="flex flex-wrap gap-1.5"></div>
                         </div>
-                        <div class="theme-subtle p-2.5 rounded-xl">
-                            <span class="text-[10px] font-extrabold uppercase block">Math Avg</span>
-                            <span id="anMockMathAvg" class="text-lg font-black">0</span>
+
+                        <div>
+                            <span class="text-xs font-extrabold uppercase block mb-1.5">✅ Strong Chapters (High Accuracy):</span>
+                            <div id="anStrongChaptersBox" class="flex flex-wrap gap-1.5"></div>
                         </div>
                     </div>
 
-                    <div>
-                        <span class="text-xs font-extrabold uppercase block mb-1.5">⚠️ Weak Chapters (Focus More Here):</span>
-                        <div id="anWeakChaptersBox" class="flex flex-wrap gap-1.5"></div>
+                    <!-- 3. Health, Hydration, Sleep & Exercise 360° Analysis -->
+                    <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-4">
+                        <h3 class="text-sm font-black uppercase pb-2 border-b theme-border">💧 Health, Water, Sleep & Bio-Fuel Analysis</h3>
+                        
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center">
+                            <div class="theme-subtle p-3 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">Avg Water / Day</span>
+                                <span id="anAvgWater" class="text-lg font-black">0.0 L</span>
+                                <span id="anAvgGlasses" class="text-[10px] block opacity-80">0 glasses</span>
+                            </div>
+                            <div class="theme-subtle p-3 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">Avg Sleep / Day</span>
+                                <span id="anAvgSleep" class="text-lg font-black">0.0 hrs</span>
+                                <span class="text-[10px] block opacity-80">Target: 7h</span>
+                            </div>
+                            <div class="theme-subtle p-3 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">Total Exercise</span>
+                                <span id="anTotExMins" class="text-lg font-black">0 mins</span>
+                                <span id="anAvgExMins" class="text-[10px] block opacity-80">0m / day</span>
+                            </div>
+                            <div class="theme-subtle p-3 rounded-xl">
+                                <span class="text-[10px] font-extrabold uppercase block">Meal Timing Log</span>
+                                <span id="anMealConsistency" class="text-lg font-black">0%</span>
+                                <span class="text-[10px] block opacity-80">Logged</span>
+                            </div>
+                        </div>
+
+                        <div id="anHealthVerdict" class="theme-subtle p-3 rounded-xl text-xs font-semibold"></div>
                     </div>
 
-                    <div>
-                        <span class="text-xs font-extrabold uppercase block mb-1.5">✅ Strong Chapters (High Accuracy):</span>
-                        <div id="anStrongChaptersBox" class="flex flex-wrap gap-1.5"></div>
+                    <!-- 4. Syllabus & Daily Action To-Do Analysis -->
+                    <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-4">
+                        <h3 class="text-sm font-black uppercase pb-2 border-b theme-border">📈 Syllabus & To-Do Execution Analysis</h3>
+                        
+                        <div class="space-y-2.5">
+                            <div class="flex justify-between text-xs font-extrabold">
+                                <span>Overall JEE Mains Syllabus Completed</span>
+                                <span id="anSylOverall">0%</span>
+                            </div>
+                            <div class="w-full h-3 rounded-full theme-subtle overflow-hidden">
+                                <div id="anSylBar" class="h-full" style="width: 0%; background-color: var(--primary-dark);"></div>
+                            </div>
+
+                            <div class="flex justify-between text-xs font-extrabold pt-2">
+                                <span>Daily Action To-Do Completion Rate</span>
+                                <span id="anTodoRate">0% (0/0)</span>
+                            </div>
+                            <div class="w-full h-3 rounded-full theme-subtle overflow-hidden">
+                                <div id="anTodoBar" class="h-full" style="width: 0%; background-color: var(--primary);"></div>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
-
-                <!-- 3. Health, Hydration, Sleep & Exercise 360° Analysis -->
-                <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-4">
-                    <h3 class="text-sm font-black uppercase pb-2 border-b theme-border">💧 Health, Water, Sleep & Bio-Fuel Analysis</h3>
-                    
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center">
-                        <div class="theme-subtle p-3 rounded-xl">
-                            <span class="text-[10px] font-extrabold uppercase block">Avg Water / Day</span>
-                            <span id="anAvgWater" class="text-lg font-black">0.0 L</span>
-                            <span id="anAvgGlasses" class="text-[10px] block opacity-80">0 glasses</span>
-                        </div>
-                        <div class="theme-subtle p-3 rounded-xl">
-                            <span class="text-[10px] font-extrabold uppercase block">Avg Sleep / Day</span>
-                            <span id="anAvgSleep" class="text-lg font-black">0.0 hrs</span>
-                            <span class="text-[10px] block opacity-80">Target: 7h</span>
-                        </div>
-                        <div class="theme-subtle p-3 rounded-xl">
-                            <span class="text-[10px] font-extrabold uppercase block">Total Exercise</span>
-                            <span id="anTotExMins" class="text-lg font-black">0 mins</span>
-                            <span id="anAvgExMins" class="text-[10px] block opacity-80">0m / day</span>
-                        </div>
-                        <div class="theme-subtle p-3 rounded-xl">
-                            <span class="text-[10px] font-extrabold uppercase block">Meal Timing Log</span>
-                            <span id="anMealConsistency" class="text-lg font-black">0%</span>
-                            <span class="text-[10px] block opacity-80">Logged</span>
-                        </div>
-                    </div>
-
-                    <div id="anHealthVerdict" class="theme-subtle p-3 rounded-xl text-xs font-semibold"></div>
-                </div>
-
-                <!-- 4. Syllabus & Daily Action To-Do Analysis -->
-                <div class="theme-card rounded-2xl p-4 sm:p-5 space-y-4">
-                    <h3 class="text-sm font-black uppercase pb-2 border-b theme-border">📈 Syllabus & To-Do Execution Analysis</h3>
-                    
-                    <div class="space-y-2.5">
-                        <div class="flex justify-between text-xs font-extrabold">
-                            <span>Overall JEE Mains Syllabus Completed</span>
-                            <span id="anSylOverall">0%</span>
-                        </div>
-                        <div class="w-full h-3 rounded-full theme-subtle overflow-hidden">
-                            <div id="anSylBar" class="h-full" style="width: 0%; background-color: var(--primary-dark);"></div>
-                        </div>
-
-                        <div class="flex justify-between text-xs font-extrabold pt-2">
-                            <span>Daily Action To-Do Completion Rate</span>
-                            <span id="anTodoRate">0% (0/0)</span>
-                        </div>
-                        <div class="w-full h-3 rounded-full theme-subtle overflow-hidden">
-                            <div id="anTodoBar" class="h-full" style="width: 0%; background-color: var(--primary);"></div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
 
@@ -1088,7 +1284,7 @@
             if (el) el.textContent = diffDays;
         }
 
-        function getLocalYYYYMMDD(dateObj = new Date()) {
+   function getLocalYYYYMMDD(dateObj = new Date()) {
             const y = dateObj.getFullYear();
             const m = String(dateObj.getMonth() + 1).padStart(2, '0');
             const d = String(dateObj.getDate()).padStart(2, '0');
@@ -1159,6 +1355,9 @@
 
             updateDateHeaderUI();
             renderDayTrackerUI();
+            if (!document.getElementById('tabContent-analytics').classList.contains('hidden')) {
+                render360Analysis();
+            }
         }
 
         function saveCurrentDayRecord() {
@@ -1333,7 +1532,6 @@
             'mealSnacksTime', 'mealSnacks',
             'mealDinnerTime', 'mealDinner'
         ];
-
         function updateField(fieldId, value) {
             currentDayData[fieldId] = value;
             saveCurrentDayRecord();
@@ -1661,7 +1859,6 @@
             document.getElementById('mathSylPct').textContent = `${stats.Mathematics}%`;
             document.getElementById('mathSylBar').style.width = `${stats.Mathematics}%`;
         }
-
         /* =========================================================================
            6. TAB 3: MOCK TEST LOGGER & CHAPTER STRENGTH/WEAKNESS
            ========================================================================= */
@@ -1754,9 +1951,205 @@
         }
 
         /* =========================================================================
-           7. TAB 4: 360° COMPLETE ANALYSIS (Aggregates Everything)
+           7. TAB 4: 360° ANALYSIS (1 DAY | 2 WEEK | 100 DAY PROGRESS)
            ========================================================================= */
-        function render360Analysis() {
+        let activeAnalysisMode = '1day';
+
+        function switchAnalysisMode(mode) {
+            activeAnalysisMode = mode;
+            ['1day', '2week', '100day'].forEach(m => {
+                const btn = document.getElementById(`anBtn-${m}`);
+                const view = document.getElementById(`anView-${m}`);
+                if (btn) btn.classList.toggle('tab-btn-active', m === mode);
+                if (view) view.classList.toggle('hidden', m !== mode);
+            });
+            render360Analysis();
+        }
+
+        function parseDayStats(d) {
+            if (!d) return { hasActivity: false, pH:0, cH:0, mH:0, sH:0, totalH:0, pQ:0, cQ:0, mQ:0, pracQ:0, pP:0, cP:0, mP:0, pyqQ:0, totalQ:0, lDone:0, wG:0, slH:0, exM:0, meals:0, todoTotal:0, todoDone:0 };
+            const pH = numVal(d.phyHrs), cH = numVal(d.chemHrs), mH = numVal(d.mathHrs), sH = numVal(d.extraSelfHours);
+            const totalH = pH + cH + mH + sH;
+            const pQ = numVal(d.phyQs), cQ = numVal(d.chemQs), mQ = numVal(d.mathQs);
+            const pracQ = pQ + cQ + mQ;
+            const pP = numVal(d.phyPyq), cP = numVal(d.chemPyq), mP = numVal(d.mathPyq);
+            const pyqQ = pP + cP + mP;
+            const totalQ = pracQ + pyqQ;
+            const lDone = Array.isArray(d.lectures) ? d.lectures.filter(l => l.done).length : 0;
+            const wG = Number(d.water) || 0;
+            const slH = numVal(d.sleepHrs);
+            const exM = numVal(d.exMins);
+
+            let meals = 0;
+            if (d.mealBreakfast || d.mealBreakfastTime) meals++;
+            if (d.mealLunch || d.mealLunchTime) meals++;
+            if (d.mealSnacks || d.mealSnacksTime) meals++;
+            if (d.mealDinner || d.mealDinnerTime) meals++;
+
+            const todoTotal = Array.isArray(d.todos) ? d.todos.length : 0;
+            const todoDone = Array.isArray(d.todos) ? d.todos.filter(t => t.done).length : 0;
+            const hasActivity = (totalH + totalQ + lDone + wG + slH + exM + todoTotal) > 0;
+
+            return { hasActivity, pH, cH, mH, sH, totalH, pQ, cQ, mQ, pracQ, pP, cP, mP, pyqQ, totalQ, lDone, wG, slH, exM, meals, todoTotal, todoDone };
+        }
+
+        function renderSubjectBarsHTML(pH, cH, mH, pQ, cQ, mQ, pP, cP, mP) {
+            const pcmTotal = Math.max(0.1, pH + cH + mH);
+            const rows = [
+                { name: '⚡ Physics', hrs: pH, q: pQ, pyq: pP, pct: (pH + cH + mH) > 0 ? Math.round((pH / pcmTotal) * 100) : 0 },
+                { name: '🧪 Chemistry', hrs: cH, q: cQ, pyq: cP, pct: (pH + cH + mH) > 0 ? Math.round((cH / pcmTotal) * 100) : 0 },
+                { name: '📐 Mathematics', hrs: mH, q: mQ, pyq: mP, pct: (pH + cH + mH) > 0 ? Math.round((mH / pcmTotal) * 100) : 0 }
+            ];
+            return rows.map(s => `
+                <div class="theme-subtle p-3 rounded-xl space-y-1.5">
+                    <div class="flex justify-between text-xs font-extrabold">
+                        <span>${s.name}</span>
+                        <span>${s.hrs.toFixed(1)} Hrs (${s.pct}%) • ${Math.round(s.q)} Qs • ${Math.round(s.pyq)} PYQs</span>
+                    </div>
+                    <div class="w-full h-2.5 bg-white/70 rounded-full overflow-hidden">
+                        <div class="h-full transition-all duration-300" style="width: ${s.pct}%; background-color: var(--primary-dark);"></div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function render1DayView() {
+            const st = parseDayStats(currentDayData);
+            const dtLabel = document.getElementById('ddmmyyyyDisplay').textContent;
+            document.getElementById('daysTrackedBadge').textContent = `1 Day • ${dtLabel}`;
+            document.getElementById('anModeSubtitle').textContent = `Showing complete single-day report for selected date (${dtLabel})`;
+            document.getElementById('d1DateLabel').textContent = dtLabel;
+
+            const maxLecs = showBacklogLectures ? 5 : 3;
+            const lecPct = Math.min(100, Math.round((st.lDone / maxLecs) * 100));
+            const todoPct = st.todoTotal > 0 ? Math.round((st.todoDone / st.todoTotal) * 100) : 0;
+
+            document.getElementById('d1TotHours').textContent = st.totalH.toFixed(1);
+            document.getElementById('d1HoursSplit').textContent = `PCM: ${(st.pH + st.cH + st.mH).toFixed(1)}h • Self: ${st.sH.toFixed(1)}h`;
+            document.getElementById('d1TotQuestions').textContent = Math.round(st.totalQ);
+            document.getElementById('d1PyqSplit').textContent = `${Math.round(st.pracQ)} Practice • ${Math.round(st.pyqQ)} PYQs`;
+            document.getElementById('d1TotLectures').textContent = `${st.lDone} / ${maxLecs}`;
+            document.getElementById('d1LecStatus').textContent = `${lecPct}% Completed`;
+            document.getElementById('d1TodoDone').textContent = `${st.todoDone} / ${st.todoTotal}`;
+            document.getElementById('d1TodoPct').textContent = `${todoPct}% Action Rate`;
+
+            document.getElementById('d1SubjectBreakdown').innerHTML = renderSubjectBarsHTML(
+                st.pH, st.cH, st.mH, st.pQ, st.cQ, st.mQ, st.pP, st.cP, st.mP
+            );
+
+            const lecs = (currentDayData.lectures || []).slice(0, maxLecs);
+            document.getElementById('d1LectureTopicsList').innerHTML = lecs.map((l, i) => `
+                <div class="flex items-center justify-between px-3 py-1.5 rounded-lg theme-subtle">
+                    <span class="font-extrabold">${l.done ? '✅' : '⏳'} Lec #${i + 1} (${l.sub}): <span class="font-semibold">${l.topic || 'No topic written'}</span></span>
+                    <span class="text-[10px] font-black uppercase">${l.done ? 'Done' : 'Pending'}</span>
+                </div>
+            `).join('');
+
+            document.getElementById('d1WaterVal').textContent = `${(st.wG * 0.25).toFixed(2)} L`;
+            document.getElementById('d1SleepVal').textContent = `${st.slH} hrs`;
+            document.getElementById('d1ExVal').textContent = `${Math.round(st.exM)} mins`;
+
+            const vEl = document.getElementById('d1VerdictBox');
+            if (st.totalH >= 8 && st.totalQ >= 40 && st.lDone >= 3) {
+                vEl.textContent = '🔥 Champion Day! You hit 8+ study hours, 40+ questions, and finished your lectures.';
+            } else if (st.totalH > 0 || st.totalQ > 0 || st.lDone > 0) {
+                vEl.textContent = `⚡ Good progress today! Push to reach 8+ hours and 50+ Questions/PYQs before sleeping.`;
+            } else {
+                vEl.textContent = '📋 No study entries logged for this date yet. Go to Tab 1 to start logging your day!';
+            }
+        }
+        function render2WeekView() {
+            const endDt = parseYYYYMMDD(activeDateStr);
+            let activeDays = 0;
+            let pH = 0, cH = 0, mH = 0, sH = 0;
+            let pQ = 0, cQ = 0, mQ = 0, pP = 0, cP = 0, mP = 0;
+            let lDone = 0, wG = 0, slH = 0, slDays = 0, exM = 0, meals = 0, todoTot = 0, todoDn = 0;
+
+            const dayCardsHTML = [];
+            const shortWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+            for (let offset = 13; offset >= 0; offset--) {
+                const d = new Date(endDt);
+                d.setDate(d.getDate() - offset);
+                const dStr = getLocalYYYYMMDD(d);
+                const dd = String(d.getDate()).padStart(2, '0');
+                const mm = String(d.getMonth() + 1).padStart(2, '0');
+
+                let raw = localStorage.getItem(getDayStorageKey(dStr));
+                let parsed = null;
+                if (raw) {
+                    try { parsed = JSON.parse(raw); } catch (e) {}
+                }
+                const st = parseDayStats(parsed);
+                if (st.hasActivity) {
+                    activeDays++;
+                    pH += st.pH; cH += st.cH; mH += st.mH; sH += st.sH;
+                    pQ += st.pQ; cQ += st.cQ; mQ += st.mQ;
+                    pP += st.pP; cP += st.cP; mP += st.mP;
+                    lDone += st.lDone;
+                    wG += st.wG;
+                    if (st.slH > 0) { slH += st.slH; slDays++; }
+                    exM += st.exM;
+                    meals += st.meals;
+                    todoTot += st.todoTotal;
+                    todoDn += st.todoDone;
+                }
+
+                const isCurrent = dStr === activeDateStr;
+                dayCardsHTML.push(`
+                    <button type="button" onclick="loadDateRecord('${dStr}'); switchTab('today');"
+                            class="p-2.5 rounded-xl border text-left transition cursor-pointer flex flex-col justify-between ${
+                                st.hasActivity ? 'theme-subtle' : 'theme-card opacity-75'
+                            } ${isCurrent ? 'ring-2 ring-current' : ''}">
+                        <div class="flex items-center justify-between w-full">
+                            <span class="text-[10px] font-extrabold uppercase">${shortWeek[d.getDay()]} ${dd}/${mm}</span>
+                            <span class="text-[10px] font-black">${st.hasActivity ? '✅' : '—'}</span>
+                        </div>
+                        <div class="mt-1.5">
+                            <span class="text-xs font-black block">${st.totalH.toFixed(1)} hrs</span>
+                            <span class="text-[10px] font-bold opacity-80 block">${Math.round(st.totalQ)} Qs • ${st.lDone} Lec</span>
+                        </div>
+                    </button>
+                `);
+            }
+
+            const denom = Math.max(1, activeDays);
+            const totH = pH + cH + mH + sH;
+            const totPrac = pQ + cQ + mQ;
+            const totPyq = pP + cP + mP;
+
+            document.getElementById('daysTrackedBadge').textContent = `2 Weeks • ${activeDays} / 14 Days Active`;
+            document.getElementById('anModeSubtitle').textContent = `14-Day Sprint Analysis ending on ${document.getElementById('ddmmyyyyDisplay').textContent}`;
+
+            document.getElementById('w2TotHours').textContent = totH.toFixed(1);
+            document.getElementById('w2AvgHours').textContent = `Avg: ${(totH / denom).toFixed(1)} hrs/active day`;
+            document.getElementById('w2TotQuestions').textContent = Math.round(totPrac + totPyq);
+            document.getElementById('w2PyqSplit').textContent = `${Math.round(totPrac)} Practice • ${Math.round(totPyq)} PYQs`;
+            document.getElementById('w2TotLectures').textContent = lDone;
+            document.getElementById('w2AvgLecs').textContent = `Active Days: ${activeDays} / 14`;
+
+            const avgWaterL = ((wG / denom) * 0.25).toFixed(2);
+            const avgSleepH = slDays > 0 ? (slH / slDays).toFixed(1) : '0.0';
+            document.getElementById('w2AvgWater').textContent = `${avgWaterL} L`;
+            document.getElementById('w2AvgSleep').textContent = `Avg Sleep: ${avgSleepH} hrs`;
+
+            document.getElementById('w2DaysGrid').innerHTML = dayCardsHTML.join('');
+            document.getElementById('w2SubjectBreakdown').innerHTML = renderSubjectBarsHTML(pH, cH, mH, pQ, cQ, mQ, pP, cP, mP);
+
+            const todoPct = todoTot > 0 ? Math.round((todoDn / todoTot) * 100) : 0;
+            const mealPct = activeDays > 0 ? Math.min(100, Math.round((meals / (activeDays * 4)) * 100)) : 0;
+            document.getElementById('w2TodoRate').textContent = `${todoPct}%`;
+            document.getElementById('w2TodoCount').textContent = `${todoDn} / ${todoTot} tasks`;
+            document.getElementById('w2ExTotal').textContent = `${Math.round(exM)} mins`;
+            document.getElementById('w2MealRate').textContent = `Meals logged: ${mealPct}%`;
+
+            const insightEl = document.getElementById('w2InsightBox');
+            insightEl.textContent = activeDays >= 10
+                ? `🔥 Strong 2-Week Consistency! You stayed active ${activeDays}/14 days with ${totH.toFixed(1)} hours & ${Math.round(totPrac + totPyq)} questions solved.`
+                : `💡 2-Week Tip: Try to log your study hours and PYQs every single day for the next 14 days to build an unbroken streak!`;
+        }
+
+        function render100DayView() {
             let daysCount = 0;
             let totPhyH = 0, totChemH = 0, totMathH = 0, totSelfH = 0;
             let totPhyQ = 0, totChemQ = 0, totMathQ = 0;
@@ -1771,34 +2164,19 @@
                 if (k && k.startsWith('mission100_day_')) {
                     try {
                         const d = JSON.parse(localStorage.getItem(k));
-                        const pH = numVal(d.phyHrs), cH = numVal(d.chemHrs), mH = numVal(d.mathHrs), sH = numVal(d.extraSelfHours);
-                        const pQ = numVal(d.phyQs), cQ = numVal(d.chemQs), mQ = numVal(d.mathQs);
-                        const pP = numVal(d.phyPyq), cP = numVal(d.chemPyq), mP = numVal(d.mathPyq);
-                        const lDone = Array.isArray(d.lectures) ? d.lectures.filter(l => l.done).length : 0;
-                        const wG = Number(d.water) || 0;
-                        const slH = numVal(d.sleepHrs);
-                        const exM = numVal(d.exMins);
-
-                        const hasActivity = (pH + cH + mH + sH + pQ + cQ + mQ + pP + cP + mP + lDone + wG + slH + exM) > 0 || (Array.isArray(d.todos) && d.todos.length > 0);
-                        if (hasActivity) {
+                        const st = parseDayStats(d);
+                        if (st.hasActivity) {
                             daysCount++;
-                            totPhyH += pH; totChemH += cH; totMathH += mH; totSelfH += sH;
-                            totPhyQ += pQ; totChemQ += cQ; totMathQ += mQ;
-                            totPhyP += pP; totChemP += cP; totMathP += mP;
-                            totLecs += lDone;
-                            totWaterGlasses += wG;
-                            if (slH > 0) { totSleepH += slH; sleepDays++; }
-                            totExM += exM;
-
-                            if (d.mealBreakfast || d.mealBreakfastTime) mealSlotsLogged++;
-                            if (d.mealLunch || d.mealLunchTime) mealSlotsLogged++;
-                            if (d.mealSnacks || d.mealSnacksTime) mealSlotsLogged++;
-                            if (d.mealDinner || d.mealDinnerTime) mealSlotsLogged++;
-
-                            if (Array.isArray(d.todos)) {
-                                todoTotal += d.todos.length;
-                                todoDone += d.todos.filter(t => t.done).length;
-                            }
+                            totPhyH += st.pH; totChemH += st.cH; totMathH += st.mH; totSelfH += st.sH;
+                            totPhyQ += st.pQ; totChemQ += st.cQ; totMathQ += st.mQ;
+                            totPhyP += st.pP; totChemP += st.cP; totMathP += st.mP;
+                            totLecs += st.lDone;
+                            totWaterGlasses += st.wG;
+                            if (st.slH > 0) { totSleepH += st.slH; sleepDays++; }
+                            totExM += st.exM;
+                            mealSlotsLogged += st.meals;
+                            todoTotal += st.todoTotal;
+                            todoDone += st.todoDone;
                         }
                     } catch (e) {}
                 }
@@ -1808,36 +2186,40 @@
             const grandHours = totPhyH + totChemH + totMathH + totSelfH;
             const grandPracQ = totPhyQ + totChemQ + totMathQ;
             const grandPyq = totPhyP + totChemP + totMathP;
+            const grandTotalQ = grandPracQ + grandPyq;
 
-            document.getElementById('daysTrackedBadge').textContent = `${daysCount} Active Day(s) Tracked`;
+            document.getElementById('daysTrackedBadge').textContent = `100-Day Mission • ${daysCount} / 100 Days`;
+            document.getElementById('anModeSubtitle').textContent = `Complete 100-Day Mission Progress across all tracked days, syllabus & mock tests`;
+
+            // 100-Day Milestone Progress Bars
+            const dayPct100 = Math.min(100, Math.round((daysCount / 100) * 100));
+            const hrsPct800 = Math.min(100, Math.round((grandHours / 800) * 100));
+            const qsPct5000 = Math.min(100, Math.round((grandTotalQ / 5000) * 100));
+
+            document.getElementById('p100DaysMilestoneBadge').textContent = `${daysCount} / 100 Days Active`;
+            document.getElementById('p100DayBarLabel').textContent = `${dayPct100}% (${daysCount}/100d)`;
+            document.getElementById('p100DayBar').style.width = `${dayPct100}%`;
+
+            document.getElementById('p100HrsBarLabel').textContent = `${hrsPct800}% (${grandHours.toFixed(0)}/800h)`;
+            document.getElementById('p100HrsBar').style.width = `${hrsPct800}%`;
+
+            document.getElementById('p100QsBarLabel').textContent = `${qsPct5000}% (${Math.round(grandTotalQ)}/5000)`;
+            document.getElementById('p100QsBar').style.width = `${qsPct5000}%`;
+
+            // KPI Cards
             document.getElementById('anTotHours').textContent = grandHours.toFixed(1);
             document.getElementById('anAvgHours').textContent = `Avg: ${(grandHours / denom).toFixed(1)} hrs/day`;
 
-            document.getElementById('anTotQuestions').textContent = Math.round(grandPracQ + grandPyq);
+            document.getElementById('anTotQuestions').textContent = Math.round(grandTotalQ);
             document.getElementById('anPyqSplit').textContent = `${Math.round(grandPracQ)} Practice • ${Math.round(grandPyq)} PYQs`;
 
             document.getElementById('anTotLectures').textContent = totLecs;
             document.getElementById('anLecRate').textContent = `Avg: ${(totLecs / denom).toFixed(1)} lecs/day`;
 
             // Subject Breakdown Bars
-            const pcmHoursTotal = Math.max(0.1, totPhyH + totChemH + totMathH);
-            const subContainer = document.getElementById('anSubjectBreakdown');
-            const subjectsData = [
-                { name: '⚡ Physics', hrs: totPhyH, q: totPhyQ, pyq: totPhyP, pct: Math.round((totPhyH / pcmHoursTotal) * 100) },
-                { name: '🧪 Chemistry', hrs: totChemH, q: totChemQ, pyq: totChemP, pct: Math.round((totChemH / pcmHoursTotal) * 100) },
-                { name: '📐 Mathematics', hrs: totMathH, q: totMathQ, pyq: totMathP, pct: Math.round((totMathH / pcmHoursTotal) * 100) }
-            ];
-            subContainer.innerHTML = subjectsData.map(s => `
-                <div class="theme-subtle p-3 rounded-xl space-y-1.5">
-                    <div class="flex justify-between text-xs font-extrabold">
-                        <span>${s.name}</span>
-                        <span>${s.hrs.toFixed(1)} Hrs (${s.pct}%) • ${Math.round(s.q)} Qs • ${Math.round(s.pyq)} PYQs</span>
-                    </div>
-                    <div class="w-full h-2.5 bg-white/70 rounded-full overflow-hidden">
-                        <div class="h-full" style="width: ${s.pct}%; background-color: var(--primary-dark);"></div>
-                    </div>
-                </div>
-            `).join('');
+            document.getElementById('anSubjectBreakdown').innerHTML = renderSubjectBarsHTML(
+                totPhyH, totChemH, totMathH, totPhyQ, totChemQ, totMathQ, totPhyP, totChemP, totMathP
+            );
 
             // Mock Tests Analysis
             const mocks = getMockTests();
@@ -1908,6 +2290,16 @@
             document.getElementById('anTodoBar').style.width = `${todoPct}%`;
         }
 
+        function render360Analysis() {
+            if (activeAnalysisMode === '1day') {
+                render1DayView();
+            } else if (activeAnalysisMode === '2week') {
+                render2WeekView();
+            } else {
+                render100DayView();
+            }
+        }
+
         /* =========================================================================
            8. TAB SWITCHER & NTA MESSAGES DRAWER
            ========================================================================= */
@@ -1956,7 +2348,6 @@
                 </div>
             `).join('');
         }
-
         function addNtaMessage() {
             const inp = document.getElementById('newNtaMsgInput');
             if (!inp || !inp.value.trim()) return;
@@ -2014,9 +2405,25 @@
         }
 
         /* =========================================================================
-           10. INITIALIZATION ON WINDOW LOAD
+           10. CLEAN STORAGE MIGRATION & INITIALIZATION ON WINDOW LOAD
            ========================================================================= */
+        function migrateCleanStorageKeys() {
+            const keysToMigrate = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const k = localStorage.key(i);
+                if (k && k.includes('_v3')) keysToMigrate.push(k);
+            }
+            keysToMigrate.forEach(oldKey => {
+                const newKey = oldKey.replace('_v3', '');
+                if (!localStorage.getItem(newKey)) {
+                    localStorage.setItem(newKey, localStorage.getItem(oldKey));
+                }
+                localStorage.removeItem(oldKey);
+            });
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
+            migrateCleanStorageKeys();
             const savedTheme = localStorage.getItem('mission100_theme') || 'teal';
             applyTheme(savedTheme);
             updateLiveCountdown();
