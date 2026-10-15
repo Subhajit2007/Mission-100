@@ -1034,7 +1034,7 @@
             Object.keys(found.vars).forEach(k => {
                 root.style.setProperty(k, found.vars[k]);
             });
-            localStorage.setItem('mission100_theme_v3', found.id);
+            localStorage.setItem('mission100_theme', found.id);
             const labelEl = document.getElementById('currentThemeLabel');
             if (labelEl) labelEl.textContent = found.name.replace(/^\d+\.\s*/, '').split('(')[0].trim();
             renderThemeMenu();
@@ -1049,7 +1049,7 @@
         function renderThemeMenu() {
             const container = document.getElementById('themeListContainer');
             if (!container) return;
-            const activeId = localStorage.getItem('mission100_theme_v3') || 'teal';
+            const activeId = localStorage.getItem('mission100_theme') || 'teal';
             container.innerHTML = '';
 
             COLOR_THEMES.forEach(theme => {
@@ -1130,7 +1130,7 @@
         }
 
         function getDayStorageKey(dateStr) {
-            return `mission100_day_v3_${dateStr}`;
+            return `mission100_day_${dateStr}`;
         }
 
         function loadDateRecord(dateStr) {
@@ -1550,7 +1550,7 @@
 
         function getSyllabusState() {
             try {
-                const raw = localStorage.getItem('mission100_syllabus_v3');
+                const raw = localStorage.getItem('mission100_syllabus');
                 return raw ? JSON.parse(raw) : {};
             } catch (e) {
                 return {};
@@ -1558,7 +1558,7 @@
         }
 
         function saveSyllabusState(state) {
-            localStorage.setItem('mission100_syllabus_v3', JSON.stringify(state));
+            localStorage.setItem('mission100_syllabus', JSON.stringify(state));
             updateSyllabusProgressBars();
         }
 
@@ -1667,7 +1667,7 @@
            ========================================================================= */
         function getMockTests() {
             try {
-                const raw = localStorage.getItem('mission100_mocks_v3');
+                const raw = localStorage.getItem('mission100_mocks');
                 return raw ? JSON.parse(raw) : [];
             } catch (e) {
                 return [];
@@ -1692,7 +1692,7 @@
                 total: phy + chem + math,
                 strong, weak
             });
-            localStorage.setItem('mission100_mocks_v3', JSON.stringify(list));
+            localStorage.setItem('mission100_mocks', JSON.stringify(list));
 
             document.getElementById('mockName').value = '';
             document.getElementById('mockPhy').value = '';
@@ -1706,7 +1706,7 @@
 
         function deleteMockTest(id) {
             const list = getMockTests().filter(m => m.id !== id);
-            localStorage.setItem('mission100_mocks_v3', JSON.stringify(list));
+            localStorage.setItem('mission100_mocks', JSON.stringify(list));
             renderMockHistory();
         }
 
@@ -1768,7 +1768,7 @@
 
             for (let i = 0; i < localStorage.length; i++) {
                 const k = localStorage.key(i);
-                if (k && k.startsWith('mission100_day_v3_')) {
+                if (k && k.startsWith('mission100_day_')) {
                     try {
                         const d = JSON.parse(localStorage.getItem(k));
                         const pH = numVal(d.phyHrs), cH = numVal(d.chemHrs), mH = numVal(d.mathHrs), sH = numVal(d.extraSelfHours);
@@ -1932,7 +1932,7 @@
 
         function getNtaMessages() {
             try {
-                const raw = localStorage.getItem('mission100_nta_msgs_v3');
+                const raw = localStorage.getItem('mission100_nta_msgs');
                 return raw ? JSON.parse(raw) : DEFAULT_NTA_MESSAGES;
             } catch (e) {
                 return DEFAULT_NTA_MESSAGES;
@@ -1966,14 +1966,14 @@
                 date: document.getElementById('ddmmyyyyDisplay').textContent,
                 text: inp.value.trim()
             });
-            localStorage.setItem('mission100_nta_msgs_v3', JSON.stringify(list));
+            localStorage.setItem('mission100_nta_msgs', JSON.stringify(list));
             inp.value = '';
             renderNtaMessages();
         }
 
         function deleteNtaMessage(id) {
             const list = getNtaMessages().filter(m => m.id !== id);
-            localStorage.setItem('mission100_nta_msgs_v3', JSON.stringify(list));
+            localStorage.setItem('mission100_nta_msgs', JSON.stringify(list));
             renderNtaMessages();
         }
 
@@ -2017,7 +2017,7 @@
            10. INITIALIZATION ON WINDOW LOAD
            ========================================================================= */
         window.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('mission100_theme_v3') || 'teal';
+            const savedTheme = localStorage.getItem('mission100_theme') || 'teal';
             applyTheme(savedTheme);
             updateLiveCountdown();
             loadDateRecord(getLocalYYYYMMDD(new Date()));
